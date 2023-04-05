@@ -6,7 +6,7 @@
 
 body {
 	/*background:-webkit-linear-gradient(left, #fafcf9, #e6ebe7);*/
-	background-image:url(Background.jpg);
+	background-image:url(../LogIn/Background.jpg);
 	background-repeat:no-repeat;
 	background-size: cover;
 	display: flex;
@@ -53,7 +53,7 @@ body {
 
 h2 {
 	text-align: center;
-	color:#eee;
+	color:black;
 }
 .head{
 

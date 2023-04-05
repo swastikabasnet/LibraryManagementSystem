@@ -276,7 +276,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 70%;
     height: 100%;
     object-fit: contain;
 }
@@ -305,7 +305,7 @@ body {
 /* Base styles */
 
 .form {
-    background-color: #407e1a;
+    background-color: #d9e6d1;
     border-radius: 31px;
     box-shadow: 0 0 10px #aaa;
     padding: 20px;

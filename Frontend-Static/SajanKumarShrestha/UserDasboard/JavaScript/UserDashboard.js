@@ -27,3 +27,14 @@ let table = document.querySelector(".table");
 tableBtn.addEventListener("click", function() {
     table.classList.toggle("active");
 });
+
+// Logout Confirmation
+function confirmLogout() {
+    if (confirm("Are you sure you want to log out?")) {
+        // if user clicks "OK", redirect to logout page
+        window.location.href = "../../../Abhinaya/LogIn/LogIn.html";
+    } else {
+        // if user clicks "Cancel", do nothing
+        return false;
+    }
+}

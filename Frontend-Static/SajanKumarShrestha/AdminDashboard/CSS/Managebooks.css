@@ -12,8 +12,8 @@ h1 {
 }
 
 h2 {
-    margin-top: 2%;
-    text-align: center;
+    margin-left: 31%;
+	margin-top:2%
 }
 
 
@@ -72,12 +72,10 @@ button {
 }
 
 @media screen and (min-width: 768px) {
-
     /* Increase the font size for larger screens */
     html {
         font-size: 18px;
     }
-
     /* Increase the width of the form for larger screens */
     form {
         max-width: 600px;

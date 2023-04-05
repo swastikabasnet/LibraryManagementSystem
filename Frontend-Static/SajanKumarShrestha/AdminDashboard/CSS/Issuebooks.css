@@ -276,7 +276,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 70%;
     height: 100%;
     object-fit: contain;
 }
@@ -509,21 +509,17 @@ body {
     .navigation {
         left: -300px;
     }
-
     .navigation.active {
         width: 300px;
         left: 0;
     }
-
     .main {
         width: 100%;
         left: 0;
     }
-
     .main.active {
         left: 300px;
     }
-
     .cardBox {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -543,8 +539,8 @@ h1 {
 }
 
 h2 {
-    text-align: center;
-    margin-top: 2%;
+    margin-left: 31%;
+    margin-top: 2%
 }
 
 
@@ -603,12 +599,10 @@ button {
 }
 
 @media screen and (min-width: 768px) {
-
     /* Increase the font size for larger screens */
     html {
         font-size: 18px;
     }
-
     /* Increase the width of the form for larger screens */
     form {
         max-width: 600px;
