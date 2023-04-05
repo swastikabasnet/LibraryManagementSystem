@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+
+/* Base styles */
+
+#Requestforbook {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #aaa;
+    padding: 20px;
+    margin: 20px;
+    width: 40%;
+    margin-left: 30%;
+}
+
+.requestbook-h2 {
+    margin-top: 0;
+}
+
+.requestbook-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.requestbook-label {
+    margin-top: 10px;
+}
+
+input,
+textarea {
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.requestbook-button[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    width: 15%;
+}

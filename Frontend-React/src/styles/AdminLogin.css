@@ -1,0 +1,103 @@
+.AdminLogin-body {
+  background-image: url("./images/Background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.AdminLogin-body .btn {
+  color: black;
+  text-decoration: none;
+}
+
+.AdminLogin-body h2 {
+  text-align: center;
+  margin-top: 10;
+  font-size: 200%;
+  color: #fff;
+}
+
+.AdminLogin-body img {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-size: 18px;
+}
+
+.row {
+  background-color: rgba(255, 255, 255, .7);
+  color: black;
+  text-align: center;
+  padding: 2em 2em 0.5em;
+  width: 30%;
+  margin: 13em auto;
+  border-radius: 4px;
+}
+
+.row h1 {
+  font-size: 2.5em;
+}
+
+.row .form-group {
+  margin: 0.5em 0;
+}
+
+.row .form-group label {
+  /* display: block; */
+  color: black;
+  text-align: left;
+  font-weight: 600;
+}
+
+.row .form-group input {
+
+  /* display: block; */
+  padding: 0.5em 0;
+  width: 85%;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  align-items: center;
+  /* background-color: inherit; */
+  background-color: #ffffff;
+  border: none;
+  border-bottom: 1px solid #555;
+  color: #000000;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.row .form-group button {
+  border-radius: 5px;
+  border: 1px solid #FFFFFF;
+  background-color: #407e1a;
+  color: #FFFFFF;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  padding: 0.5em 0;
+  width: 85%;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  align-items: center;
+}
+
+.row .form-group button:active {
+  transform: scale(0.95);
+}
+
+.row .form-group button:focus {
+  outline: none;
+}
+
+.row .form-group button.ghost {
+  background-color: transparent;
+  border-color: #FFFFFF;
+}

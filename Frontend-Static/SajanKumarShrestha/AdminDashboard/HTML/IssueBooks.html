@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../CSS/Issuebooks.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script module src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+</head>
+
+<body>
+    <!--  -->
+    <div class="navigation">
+        <ul>
+            <li>
+                <a href="#">
+                    <span> <img class="user_logo" src="../Logo.png" alt="logo"></span>
+                    <span class="title_title">Hamro Library</span>
+                </a>
+            </li>
+            <li>
+                <a href="Dashboard.html">
+                    <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="User.html">
+                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                    <span class="title">User Details</span>
+                </a>
+            </li>
+            <li>
+                <a href="Managebooks.html">
+                    <span class="icon"><ion-icon name="book-outline"></ion-icon></span>
+                    <span class="title">Manage Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="Bookrequest.html">
+                    <span class="icon"><ion-icon name="notifications-outline"></ion-icon></span>
+                    <span class="title">Book Request Data</span>
+                </a>
+            </li>
+            <li>
+                <a href="IssueBooks.html">
+                    <span class="icon"><ion-icon name="arrow-redo-outline"></ion-icon></span>
+                    <span class="title">Issued Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                    <span class="title">Settings</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                    <span class="title">Log Out</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main">
+        <div class="topbar">
+            <div class="toggle">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+            <div class="user">
+                <img class="user" src="../Logo.png" alt="logo">
+            </div>
+        </div>
+
+    </div>
+    <div id="Bookissue">
+        <h2>Issue Books</h2>
+        <form>
+            <label for="bookid">Book ID:</label><br>
+            <input type="text" id="bookid" name="bookid"><br>
+            <label for="UserEmail">User Email:</label><br>
+            <input type="text" id="UserEmail" name="UserEmail"><br>
+            <label for="bookTitle">Book Title:</label><br>
+            <input type="text" id="bookTitle" name="bookTitle"><br>
+            <label for="Dateissue">Date Issued:</label><br>
+            <input type="date" id="DateIssued" name="DateIssued"><br>
+            <label for="WhentoReturn">When to Return:</label>
+            <input type="text" id="" name="WhentoReturn">
+            <button type="submit" onclick="addBook()">Issue Book</button>
+        </form>
+    </div>
+
+
+    <script src="../JavaScript/dashboard.js"></script>
+
+    <!-- -----------------SCRIPT---------------------- -->
+
+</body>
+
+</html>

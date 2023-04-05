@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../CSS/User.css" th:href="@{/css/dashboardStyle.css}">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script module src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+</head>
+
+<body>
+    <!---========navigation======== -->
+    <div class="container" id="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span> <img class="user_logo"
+                                src="C:\Users\sajan\Desktop\SajanKumarShrestha\AdminDashboard\Logo.png"
+                                alt="logo"></span>
+                        <span class="title_title">Hamro Library</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="Dashboard.html">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="User.html">
+                        <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                        <span class="title">User Details</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="Managebooks.html">
+                        <span class="icon"><ion-icon name="book-outline"></ion-icon></span>
+                        <span class="title">Manage Books</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="Bookrequest.html">
+                        <span class="icon"><ion-icon name="notifications-outline"></ion-icon></span>
+                        <span class="title">Book Request Data</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="IssueBooks.html">
+                        <span class="icon"><ion-icon name="arrow-redo-outline"></ion-icon></span>
+                        <span class="title">Issued Books</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                        <span class="title">Settings</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span class="title">Log Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- ================ main =================-->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+                <div class="user">
+                    <img class="user" src="C:\Users\sajan\Desktop\SajanKumarShrestha\AdminDashboard\Logo.png"
+                        alt="logo">
+                </div>
+            </div>
+
+            <!-- -----------------------Table-------------- -->
+            <div id="dashboard-container">
+                <table class="dashboard-table" id="book-list">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>User Name</th>
+                            <th>Email Address</th>
+                            <th>Contact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Swastika Basnet</td>
+                            <td>Swastikabasnet123@gmail.com</td>
+                            <td>9867584532</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>It's Dgbro</td>
+                            <td>dgbro123@gmail.com</td>
+                            <td>9876543210</td>
+
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Abhinaya Gupta</td>
+                            <td>abhinaya22@gmail.com</td>
+                            <td>9878765431</td>
+
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Sajan Kumar Shrestha</td>
+                            <td>sajanshrestha921@gmail.com</td>
+                            <td>9821234512</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Rekha bro</td>
+                            <td>rekha223@gmail.com</td>
+                            <td>9878685645</td>
+
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Rohal Dahal</td>
+                            <td>Rohan23@gmail.com</td>
+                            <td>9878654323</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    <!--======scripts======-->
+    <script src="../JavaScript/dashboard.js"></script>
+    <!--=====ionicons======-->
+</body>
+
+</html>

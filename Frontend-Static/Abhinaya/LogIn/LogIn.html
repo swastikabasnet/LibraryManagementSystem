@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Style_login.css">
+</head>
+<body>
+	<div class="topnav">
+		<a class="active" href="home.html">Home</a>
+		<a href="#news">SignIn</a>
+	  </div>	
+	<div class="flex-container">
+		<img src="logo.png" alt="">
+		<h2>Welcome to Hamro Library</h2>
+	</div>
+
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="#">
+			<h1>Create Account</h1>
+			
+			<input type="text" placeholder="Name" />
+			<input type="phone number" placeholder="Phone number" />
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Password" />
+            <input type="Re-enter password" placeholder="Re-enter password" />
+            
+			<button>Sign Up</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="#">
+			<h1>Sign in</h1>
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Password" />
+			<div class="forgot">
+				<a href="C:\Users\np03c\OneDrive\Desktop\frontend\ForgotPassword\forgotpw.html" style="color:black">Forgot password?</a>
+			</div>
+			<div class = "check">
+			<input type="checkbox" checked="checked" name="remember">
+				<div style="margin:20px; font-size: 12px;">
+					Remember Me 
+				</div>
+			</div>
+			<button style="margin:20px">Sign In</button>
+			
+			
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Don't have account?</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="logIn.js" type="text/javascript"></script>
+</body>
+</html>
