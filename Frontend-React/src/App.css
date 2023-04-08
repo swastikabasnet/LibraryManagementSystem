@@ -46,6 +46,16 @@ body {
   border-collapse: collapse;
   width: 120%;
   max-width: 1200px;
+  text-align: center;
+}
+
+.editOrDelete {
+  display: flex;
+  gap: 5px;
+}
+
+.editOrDelete .update button {
+  font-size: medium;
 }
 
 .dashboard-table td,

@@ -8,11 +8,13 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Users from './pages/AdminDashboard/Users';
-import AddUsers from './pages/AdminDashboard/AddUsers';
 import AdminLogin from './pages/AdminDashboard/AdminLogin';
 import DashboardNav from './pages/UserDashboard/DashboardNav';
 import AdminDashboardNav from './pages/AdminDashboard/AdminDashboardNav';
 import Login from './pages/UserDashboard/Login';
+import ForgotPassword from './pages/ForgotPassword';
+import VerifyOtp from './pages/VerifyOtp';
+import ResetPasswordOTP from './pages/ResetPasswordOTP';
 
 const router = createBrowserRouter([
   {
@@ -32,10 +34,6 @@ const router = createBrowserRouter([
     element: <Users />
   },
   {
-    path: "/users/add",
-    element: <AddUsers />
-  },
-  {
     path: "/dashboard/*",
     element: <DashboardNav />
   },
@@ -43,6 +41,18 @@ const router = createBrowserRouter([
     path: "/admindashboard/*",
     element: <AdminDashboardNav />
   },
+  {
+    path: "/forgotpassword",
+    element: <ForgotPassword />
+  },
+  {
+    path: "/verify_otp",
+    element: <VerifyOtp />
+  },
+  {
+    path: "/reset_password_otp",
+    element: <ResetPasswordOTP />
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

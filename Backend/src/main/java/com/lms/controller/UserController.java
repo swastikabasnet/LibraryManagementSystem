@@ -6,10 +6,13 @@ import com.lms.exception.PasswordNotMatchedException;
 import com.lms.exception.UserAlreadyExistException;
 import com.lms.exception.UserNotFoundException;
 import com.lms.model.LoginRequest;
+import com.lms.model.OtpRequest;
 import com.lms.model.User;
 import com.lms.services.EmailOtpService;
 import com.lms.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -68,39 +71,42 @@ public class UserController {
     }
     // for generating random otp of 6 digits
     Random random = new Random();
-    int otp;
+    int otp = 0;
     String emailOtpReset;
     @PostMapping("/Users/send_otp")
-    public void sendOtp(@RequestParam("email") String email) {
-        emailOtpReset = email;
+    public void sendOtp(@RequestBody OtpRequest otpRequest) {
+        emailOtpReset = otpRequest.getEmail();
         // Check if email exist
-        if (emailOtpService.emailExist(email) != null) {
+        if (emailOtpService.emailExist(emailOtpReset) != null) {
             // Random OTP GENERATOR
             otp = random.nextInt(900000) + 100000;
-            System.out.println("Exist -> " + email + " " + otp);
-            emailOtpService.sendMessage(email, "OPT verification code", String.valueOf(otp));
+            System.out.println("Exist -> " + emailOtpReset + " " + otp);
+            emailOtpService.sendMessage(emailOtpReset, "OPT verification code", String.valueOf(otp));
         } else {
-            throw new EmailNotFoundException(email);
+            throw new EmailNotFoundException(emailOtpReset);
         }
     }
 
-    @PutMapping("/Users/reset_password/otp")
-    public User resetPasswordViaOTP(@RequestBody User user, @RequestParam("otp") int otpCode) {
+    @PostMapping("/Users/verify_otp")
+    public ResponseEntity<User> verifyOtp(@RequestParam("otp") int otpCode) {
         // check if email exist
         User getUser = userService.getUserByEmail(emailOtpReset);
         // check if otp matches
-        if (getUser != null){
-            if (otp == otpCode) {
-                getUser.setPassword(user.getPassword());
-                System.out.println("Password changed");
-                return userService.updateUser(getUser);
-            }
+        if (getUser != null && otp == otpCode) {
+            return new ResponseEntity<>(getUser, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-         else {
-            throw new EmailNotFoundException(user.getEmail());
-        }
-        return getUser;
     }
+
+
+    @PutMapping("/User/otp/reset_password")
+    public void resetPasswordViaOTP(@RequestBody User user){
+        User getUser = userService.getUserByEmail(emailOtpReset);
+        getUser.setPassword(user.getPassword());
+        userService.updateUser(getUser);
+    }
+
 
     @PostMapping("/login")
     public @ResponseBody User login(@RequestBody LoginRequest loginRequest){

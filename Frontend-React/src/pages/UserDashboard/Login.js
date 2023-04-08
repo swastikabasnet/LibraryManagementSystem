@@ -3,6 +3,8 @@ import logo from '../../styles/images/logo.png';
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ForgotPassword from "../ForgotPassword";
+import { Link, Route, Routes } from 'react-router-dom';
 
 function Login() {
     const [name, setName] = useState('');
@@ -63,7 +65,7 @@ function Login() {
                         <input type="email" placeholder="Email" onChange={(e) => { setlogEmail(e.target.value) }} />
                         <input type="password" placeholder="Password" onChange={(e) => { setLogPassword(e.target.value) }} />
                         <div class="forgot">
-                            <a href="C:\Users\np03c\OneDrive\Desktop\frontend\ForgotPassword\forgotpw.html" style={{ color: "black" }}>Forgot password?</a>
+                            <Link to="/forgotpassword" style={{ color: "blue" }}>Forgot password?</Link>
                         </div>
                         <div class="check">
                             <input type="checkbox" checked={rememberMe} name="remember" />
@@ -91,6 +93,9 @@ function Login() {
                     </div>
                 </div>
             </div>
+            <Routes>
+                <Route path='/forgotpassowrd' element={<ForgotPassword />} />
+            </Routes>
         </div>
     );
 }

@@ -1,8 +1,67 @@
 import logo from '../../styles/images/logo.png';
 import { IonIcon } from '@ionic/react';
-import { book, library, menuOutline, people, reader, searchOutline } from "ionicons/icons"
+import { book, library, menuOutline, people, reader, reload, searchOutline } from "ionicons/icons"
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function AdminDashboard() {
+
+    const [books, setBooks] = useState([]);
+    const [editID, setEditID] = useState(-1);
+    const [bookTitle, setbookTitle] = useState('');
+    const [author, setauthor] = useState('');
+    const [category, setcategory] = useState('');
+    const [description, setdescription] = useState('');
+    const [quantity, setquantity] = useState('');
+    const [availability, setAvailability] = useState('');
+    const [publishedDate, setpublishedDate] = useState('');
+
+    const [uBookTitle, usetbookTitle] = useState('');
+    const [uQuantity, usetquantity] = useState('');
+    const [uAvailability, usetAvailability] = useState('');
+    const [uDescription, usetdescription] = useState('');
+    useEffect(() => {
+        axios.get('http://localhost:8080/books')
+            .then(response => {
+                console.log(response.data);
+                setBooks(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, []);
+
+
+    const handleEdit = (id) => {
+        axios.get('http://localhost:8080/books/' + id)
+            .then(res => {
+                usetbookTitle(res.data.bookTitle);
+                usetquantity(res.data.quantity);
+                usetAvailability(res.data.availability);
+                usetdescription(res.data.description);
+                setauthor(res.data.author);
+                setpublishedDate(res.data.publishedDate);
+                setcategory(res.data.category);
+            })
+        setEditID(id)
+    }
+
+    const handleUpdate = () => {
+        axios.put('http://localhost:8080/books/' + editID, { id: editID, bookTitle: uBookTitle, author: author, category: category, quantity: uQuantity, availability: uAvailability, description: uDescription, publishedDate: publishedDate })
+            .then(res => {
+                console.log(res);
+                window.location.reload(false);
+            }).catch(err => console.log(err));
+    }
+
+
+    const handleDelete = (id) => {
+        axios.delete('http://localhost:8080/books/' + id)
+            .then(res => {
+                window.location.reload(false);
+            }).catch(err => console.log(err));
+    }
+
     return (
         <div class="main">
             <div class="topbar">
@@ -73,52 +132,35 @@ function AdminDashboard() {
                             <th>Quantity</th>
                             <th>Availability</th>
                             <th>Description</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>The Alchemist</td>
-                            <td>10</td>
-                            <td>5</td>
-                            <td>A novel by Brazilian author Paulo Coelho</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Harry Potter and the Philosopher's Stone</td>
-                            <td>8</td>
-                            <td>4</td>
-                            <td>A novel by British author J. K. Rowling</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Die a Mockingbird</td>
-                            <td>5</td>
-                            <td>2</td>
-                            <td>A novel by American author Harper Lee</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Live Like A MOnk</td>
-                            <td>4</td>
-                            <td>2</td>
-                            <td>A novel by American author Jay Shetty</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>War and Peace</td>
-                            <td>12</td>
-                            <td>6</td>
-                            <td>A novel by American author Hitler</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>Quantam Mechanis</td>
-                            <td>9</td>
-                            <td>3</td>
-                            <td>A novel by American author Albert Shrestha </td>
-                        </tr>
+                        {books.map(book => (
+                            book.id === editID ?
+                                <tr>
+                                    <td>{book.id}</td>
+                                    <td><input type='text' value={uBookTitle} onChange={(e) => { usetbookTitle(e.target.value) }} /></td>
+                                    <td><input type='text' value={uQuantity} onChange={(e) => { usetquantity(e.target.value) }} /></td>
+                                    <td><input type='text' value={uAvailability} onChange={(e) => { usetAvailability(e.target.value) }} /></td>
+                                    <td><textarea type='text' value={uDescription} onChange={(e) => { usetdescription(e.target.value) }} /></td>
+                                    <td class="update"><button onClick={handleUpdate}>Update</button></td>
+                                </tr>
+                                :
+                                <tr key={book.id}>
+                                    <td>{book.id}</td>
+                                    <td>{book.bookTitle}</td>
+                                    <td>{book.quantity}</td>
+                                    <td>{book.availability}</td>
+                                    <td>{book.description}</td>
+                                    <td class="editOrDelete">
+                                        <button onClick={() => handleEdit(book.id)}>edit</button>
+                                        <button onClick={() => handleDelete(book.id)}>delete</button>
+                                    </td>
+                                </tr>
+                        ))}
                     </tbody>
+
                 </table>
             </div>
         </div>
