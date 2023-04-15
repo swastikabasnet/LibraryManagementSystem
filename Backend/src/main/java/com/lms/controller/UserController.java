@@ -1,10 +1,7 @@
 package com.lms.controller;
 
 
-import com.lms.exception.EmailNotFoundException;
-import com.lms.exception.PasswordNotMatchedException;
-import com.lms.exception.UserAlreadyExistException;
-import com.lms.exception.UserNotFoundException;
+import com.lms.exception.*;
 import com.lms.model.LoginRequest;
 import com.lms.model.OtpRequest;
 import com.lms.model.User;
@@ -42,8 +39,13 @@ public class UserController {
     public User addUser(@RequestBody User user) {
         User getUser = userService.getUserByEmail(user.getEmail());
         if (getUser==null){
-            user.setRole("Member");
-           return userService.addUser(user);
+            if (userService.getUserByPhoneNumber(user.getPhoneNumber())!=null){
+                throw new PhoneNumberAlreadyExistException();
+            } else {
+                user.setRole("Member");
+               return userService.addUser(user);
+
+            }
         } else {
             throw new UserAlreadyExistException();
         }

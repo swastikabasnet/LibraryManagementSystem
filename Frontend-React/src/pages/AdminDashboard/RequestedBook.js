@@ -1,6 +1,6 @@
 import { IonIcon } from '@ionic/react';
 import { menuOutline } from "ionicons/icons";
-import logo from '../../styles/images/logo.png';
+import logo from '../../styles/images/admin.png';
 
 function RequestedBooks() {
     return (
@@ -11,7 +11,7 @@ function RequestedBooks() {
                     <span class="icon"><IonIcon icon={menuOutline}></IonIcon></span>
                 </div>
                 <div class="user">
-                    <img class="user" src={logo} alt="logo" />
+                    <img class="navLogo" src={logo} alt="logo" />
                 </div>
             </div>
 

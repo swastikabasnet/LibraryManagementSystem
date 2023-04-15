@@ -3,37 +3,29 @@ body {
   padding: 0;
   font-family: sans-serif;
   color: #333;
-  background-image: url('../landing page/Background.jpg');
+  background-image: url('Background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-header {
+
+.flex-container {
   background-color: #407e1a;
   padding: 8px;
   color: #fff;
-}
-
-header h1 {
-    text-align: center;
-    color:#eee;
-}
-img{
-	height: 80px;
-	width: 80px;
-	position: absolute;
-	top: 8px;
-	left: 16px;
-	font-size: 18px;}
-
-main {
-  padding: 10px;
   text-align: center;
 }
 
-main h2 {
-  margin-top: 0;
+img {
+  height: 80px;
+  width: 80px;
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-size: 18px;
 }
+
+
 .menu-items {
   position: absolute;
   top: 70px;
@@ -46,24 +38,24 @@ main h2 {
   color: #fff;
   text-decoration: none;
 }
+
 .menu-items a:hover {
   text-decoration: underline;
 }
 
 .signup-btn {
   position: absolute;
-  top: 48px;
-  right: 16px;
-  display: inline-block;
+  right: 5px;
+  top: 25px;
   padding: 10px 20px;
   background-color: rgba(0, 0, 0, 0.5);
   transition: background-color 0.3s ease-in-out;
   color: #fff;
-  border: none;
   border-radius: 5px;
   text-decoration: none;
   transition: background-color 0.3s ease-in-out;
 }
+
 .signup-btn:hover {
   background-image: linear-gradient(to left, #407e1a 50%, #fff 50%);
   background-size: 200% 100%;
@@ -72,55 +64,7 @@ main h2 {
   color: #407e1a;
 }
 
-.popup {
-  
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  /* z-index: 9999; */
-}
 
-.popup-content {
-  
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  position: relative;
-  max-width: 200px;
-  width: 100%;
-}
-
-.popup-content a {
-  font-size: 30px;
-  /* display: block; */
-  align-items: center;
-  margin-bottom: 10px;
-  text-decoration: none;
-  color: rgb(251, 246, 246);
-  transition: color 0.3s ease-in-out;
-}
-a:hover {
-  background-color: rgba(255, 255, 255, 0.5);
-  color: #fff;
-}
-
-
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 1.5rem;
-  text-decoration: none;
-  color: #040404;
-  cursor: pointer;
-}
 footer {
   position: fixed;
   bottom: 0;
@@ -128,16 +72,9 @@ footer {
   width: 100%;
   background-color: rgba(255, 255, 255, 0.8);
   overflow-y: auto;
-  max-height: 200px; /* change this value as needed */
-}
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.5);
-  overflow-y: auto;
-  max-height: 200px; /* change this value as needed */
+  max-height: 200px;
+  text-align: justify;
+  /* change this value as needed */
 }
 
 
@@ -149,17 +86,4 @@ footer {
 
 .about-us h4 {
   margin-bottom: 5px;
-}
-
-.about-us p {
-  margin: 0;
-}
-@media only screen and (max-width: 768px) {
-  main {
-    padding: 20px;
-  }
-  
-  .popup-content {
-    max-width: 400px;
-  }
 }

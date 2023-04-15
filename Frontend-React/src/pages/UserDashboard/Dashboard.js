@@ -1,8 +1,28 @@
-import logo from '../../styles/images/logo.png';
+import logo from '../../styles/images/user.png';
 import { IonIcon } from '@ionic/react';
 import { menuOutline, searchOutline } from "ionicons/icons"
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function Dashboard() {
+
+    const [books, setBooks] = useState([]);
+    useEffect(() => {
+        axios.get('http://localhost:8080/books')
+            .then(response => {
+                console.log(response.data);
+                setBooks(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, []);
+
+    const [uBookTitle, usetbookTitle] = useState('');
+    const [uQuantity, usetquantity] = useState('');
+    const [uAvailability, usetAvailability] = useState('');
+    const [uDescription, usetdescription] = useState('');
+
     return (
         <div class="main">
             <div class="topbar">
@@ -16,7 +36,7 @@ function Dashboard() {
                     </label>
                 </div>
                 <div class="user">
-                    <img class="user" src={logo} alt="logo" />
+                    <img class="navLogo" src={logo} alt=" logo" />
                 </div>
             </div>
 
@@ -29,52 +49,22 @@ function Dashboard() {
                             <th>Quantity</th>
                             <th>Availability</th>
                             <th>Description</th>
+                            <th>Request Books</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>The Alchemist</td>
-                            <td>10</td>
-                            <td>5</td>
-                            <td>A novel by Brazilian author Paulo Coelho</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Harry Potter and the Philosopher's Stone</td>
-                            <td>8</td>
-                            <td>4</td>
-                            <td>A novel by British author J. K. Rowling</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Die a Mockingbird</td>
-                            <td>5</td>
-                            <td>2</td>
-                            <td>A novel by American author Harper Lee</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Live Like A MOnk</td>
-                            <td>4</td>
-                            <td>2</td>
-                            <td>A novel by American author Jay Shetty</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>War and Peace</td>
-                            <td>12</td>
-                            <td>6</td>
-                            <td>A novel by American author Hitler</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>Quantam Mechanis</td>
-                            <td>9</td>
-                            <td>3</td>
-                            <td>A novel by American author Albert Shrestha </td>
-                        </tr>
-
+                        {books.map(book => (
+                            <tr key={book.id}>
+                                <td>{book.id}</td>
+                                <td>{book.bookTitle}</td>
+                                <td>{book.quantity}</td>
+                                <td>{book.availability}</td>
+                                <td>{book.description}</td>
+                                <td class="Request">
+                                    <button >Request</button>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

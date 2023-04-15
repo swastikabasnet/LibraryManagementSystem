@@ -1,6 +1,5 @@
 package com.lms.model;
 
-
 public class OtpRequest {
     private String email;
 

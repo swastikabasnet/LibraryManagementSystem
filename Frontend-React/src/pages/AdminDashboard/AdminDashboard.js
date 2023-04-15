@@ -1,4 +1,4 @@
-import logo from '../../styles/images/logo.png';
+import logo from '../../styles/images/admin.png';
 import { IonIcon } from '@ionic/react';
 import { book, library, menuOutline, people, reader, reload, searchOutline } from "ionicons/icons"
 import React, { useState, useEffect } from 'react';
@@ -75,7 +75,7 @@ function AdminDashboard() {
                     </label>
                 </div>
                 <div class="user">
-                    <img class="user" src={logo} alt="logo" />
+                    <img class="navLogo" src={logo} alt="logo" />
                 </div>
             </div>
             <div class="cardBox">

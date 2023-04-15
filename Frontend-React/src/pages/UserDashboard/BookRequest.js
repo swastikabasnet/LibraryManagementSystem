@@ -1,4 +1,4 @@
-import logo from '../../styles/images/logo.png';
+import logo from '../../styles/images/user.png';
 import "../../styles/BookRequest.css";
 import { IonIcon } from '@ionic/react';
 import { menuOutline } from "ionicons/icons"
@@ -11,7 +11,7 @@ function BookRequest() {
                     <IonIcon icon={menuOutline}></IonIcon>
                 </div>
                 <div class="user">
-                    <img class="user" src={logo} alt="logo" />
+                    <img class="navLogo" src={logo} alt="logo" />
                 </div>
             </div>
 

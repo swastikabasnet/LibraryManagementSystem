@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+.navLogo {
+  margin-top: 7%;
+}
+
 :root {
   --blue: #378109;
   --white: #fff;
@@ -17,6 +21,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
 }
+
 
 .container {
   position: relative;
@@ -278,14 +283,7 @@ body {
   top: 20%
 }
 
-.user img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
+
 
 /* ====================== Responsive Design ========================== */
 

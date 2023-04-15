@@ -67,4 +67,14 @@ public class ItemNotFoundAdvice {
 
         return errorMap;
     }
+
+    @ResponseBody
+    @ExceptionHandler({PhoneNumberAlreadyExistException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Map<String, String> exceptionHandler(PhoneNumberAlreadyExistException exception){
+
+        Map<String, String> errorMap = new HashMap<>();
+        errorMap.put("errorMessage", exception.getMessage());
+        return errorMap;
+    }
 }

@@ -27,6 +27,10 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
+    public User getUserByPhoneNumber(long number){
+        return userRepository.findByPhoneNumber(number);
+    }
+
     public User addUser(User users) {
         return userRepository.save(users);
     }

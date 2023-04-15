@@ -15,11 +15,20 @@ import Login from './pages/UserDashboard/Login';
 import ForgotPassword from './pages/ForgotPassword';
 import VerifyOtp from './pages/VerifyOtp';
 import ResetPasswordOTP from './pages/ResetPasswordOTP';
+import Home from './pages/Home';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/app",
     element: <App />
+  },
+  {
+    path: "/",
+    element: <Home />
+  },
+  {
+    path: "/home",
+    element: <Home />
   },
   {
     path: "/admin",

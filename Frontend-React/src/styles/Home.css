@@ -1,0 +1,70 @@
+.Home-body {
+    font-family: 'Montserrat', sans-serif;
+    background-image: url("./images/Background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+
+.Home-body .flex-container {
+    display: flex;
+    justify-content: space-around;
+    /* align-items: center; */
+    position: relative;
+    color: #fff;
+    padding: 30px;
+    background-color: #407e1a;
+    /* text-align: center; */
+}
+
+.Home-body .flex-container img {
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-size: 18px;
+}
+
+.Home-body .flex-container h1 {
+    text-align: center;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.topLogo {
+    width: 50%;
+    max-width: 400px;
+    height: auto;
+}
+
+.Home-body footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    overflow-y: auto;
+    max-height: 200px;
+    text-align: justify;
+    /* change this value as needed */
+}
+
+
+.about-us {
+    margin: 10px;
+    padding: 10px;
+    color: black;
+}
+
+.about-us h4 {
+    margin-bottom: 5px;
+}

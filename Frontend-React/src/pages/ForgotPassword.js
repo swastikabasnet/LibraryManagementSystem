@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import logo from '../styles/images/logo.png';
 import axios from 'axios';
-import { Link, Route, Routes } from 'react-router-dom';
 
 function ForgotPassword() {
 
