@@ -1,12 +1,15 @@
 package com.lms.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.sql.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "Users")
+@Table(name = "Users1")
 public class User {
 
     @Id
@@ -20,22 +23,38 @@ public class User {
     private long phoneNumber;
     @Column(name = "password", nullable = false)
     private String password;
+    @Temporal(TemporalType.DATE)
+    @JsonSerialize(using=JsonDataSerializer.class)
     @Column(name = "registered_date")
-    String registeredDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-    @Column(name = "role")
-    private String role;
+    Date registeredDate = new java.sql.Date(System.currentTimeMillis());
+    @Column(name = "numBookBorrowed")
+    @Min(value = 0)
+    private int numBookBorrowed;
+
+    // In User class
+    @OneToMany(mappedBy = "user")
+    @JsonBackReference // Add this annotation
+    private List<Borrow> borrows;
+
+    public List<Borrow> getBorrows() {
+        return borrows;
+    }
+
+    public void setBorrows(List<Borrow> borrows) {
+        this.borrows = borrows;
+    }
 
     public User() {
     }
 
-    public User(long id, String name, String email, int phoneNumber, String password, String registeredDate, String role) {
+    public User(long id, String name, String email, int phoneNumber, String password, Date registeredDate, int numBookBorrowed) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
         this.registeredDate = registeredDate;
-        this.role = role;
+        this.numBookBorrowed = numBookBorrowed;
     }
 
     public long getId() {
@@ -79,19 +98,27 @@ public class User {
         this.password = password;
     }
 
-    public String getRegisteredDate() {
+    public Date getRegisteredDate() {
         return registeredDate;
     }
 
-    public void setRegisteredDate(String registeredDate) {
+    public void setRegisteredDate(Date registeredDate) {
         this.registeredDate = registeredDate;
     }
 
-    public String getRole() {
-        return role;
+    public int getNumBookBorrowed() {
+        return numBookBorrowed;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setNumBookBorrowed(int numBookBorrowed) {
+        this.numBookBorrowed = numBookBorrowed;
+    }
+
+    public void userBookBorrow(){
+        this.numBookBorrowed++;
+    }
+
+    public void userReturnBook(){
+        this.numBookBorrowed--;
     }
 }

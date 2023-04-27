@@ -7,6 +7,7 @@ import com.lms.model.OtpRequest;
 import com.lms.model.User;
 import com.lms.services.EmailOtpService;
 import com.lms.services.UserService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,7 +43,6 @@ public class UserController {
             if (userService.getUserByPhoneNumber(user.getPhoneNumber())!=null){
                 throw new PhoneNumberAlreadyExistException();
             } else {
-                user.setRole("Member");
                return userService.addUser(user);
 
             }
@@ -59,6 +59,7 @@ public class UserController {
         getUser.setEmail(user.getEmail());
         getUser.setPhoneNumber(user.getPhoneNumber());
         getUser.setPassword(user.getPassword());
+        getUser.setNumBookBorrowed(user.getNumBookBorrowed());
         return userService.updateUser(getUser);
     }
 
@@ -111,14 +112,16 @@ public class UserController {
 
 
     @PostMapping("/login")
-    public @ResponseBody User login(@RequestBody LoginRequest loginRequest){
+    public @ResponseBody User login(@RequestBody LoginRequest loginRequest, HttpSession session){
         User user = userService.getUserByEmail(loginRequest.getEmail());
         System.out.println(loginRequest.getEmail() +" "+ loginRequest.getPassword());
 
         if (user!=null && user.getPassword().equals(loginRequest.getPassword())){
+            session.setAttribute("userId", user.getId()); // Store the user ID in the session
             return user;
         } else {
             throw new PasswordNotMatchedException();
         }
     }
+
 }

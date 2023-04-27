@@ -77,4 +77,33 @@ public class ItemNotFoundAdvice {
         errorMap.put("errorMessage", exception.getMessage());
         return errorMap;
     }
+
+    @ResponseBody
+    @ExceptionHandler({BookOutOFStockException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Map<String, String> exceptionHandler(BookOutOFStockException exception){
+        Map<String, String> errorMap = new HashMap<>();
+        errorMap.put("errorMessage", exception.getMessage());
+        return errorMap;
+    }
+
+    @ResponseBody
+    @ExceptionHandler({BorrowNotFoundException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Map<String, String> exceptionHandler(BorrowNotFoundException exception){
+        Map<String, String> errorMap = new HashMap<>();
+        errorMap.put("errorMessage", exception.getMessage());
+        return errorMap;
+    }
+
+@ResponseBody
+    @ExceptionHandler({MaximumBooksBorrowedException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Map<String, String> exceptionHandler(MaximumBooksBorrowedException exception){
+        Map<String, String> errorMap = new HashMap<>();
+        errorMap.put("errorMessage", exception.getMessage());
+        return errorMap;
+    }
+
+
 }
