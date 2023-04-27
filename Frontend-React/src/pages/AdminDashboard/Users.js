@@ -38,6 +38,7 @@ function Users() {
                                     <th>User Name</th>
                                     <th>Email Address</th>
                                     <th>Contact</th>
+                                    <th>Number of Borrows</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,6 +48,7 @@ function Users() {
                                         <td>{user.name}</td>
                                         <td>{user.email}</td>
                                         <td>{user.phoneNumber}</td>
+                                        <td>{user.numBookBorrowed}</td>
                                     </tr>))}
                             </tbody>
                         </table>

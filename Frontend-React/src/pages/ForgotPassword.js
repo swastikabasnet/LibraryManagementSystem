@@ -32,10 +32,15 @@ function ForgotPassword() {
             <div class="row">
                 <h1>Forgot Password</h1>
                 <div class="form-group">
-                    <input type="email" placeholder="Enter your registered email" onChange={(e) => { setEmail(e.target.value) }} />
-                    <button class="btn" type='button' onClick={() => confirmEmail()}>Send Otp code</button>
+                    <input type="email" placeholder="Enter your registered email"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required
+                        onInvalid={(e) => e.target.setCustomValidity('Please enter a valid email address')}
+                        onInput={(e) => e.target.setCustomValidity('')}
+                        onChange={(e) => { setEmail(e.target.value) }} />
+                    <button class="btn" type="submit" onClick={() => confirmEmail()}>Send Otp code</button>
                 </div>
             </div>
+
         </div>
     );
 }

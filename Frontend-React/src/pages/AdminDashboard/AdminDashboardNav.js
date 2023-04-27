@@ -1,15 +1,15 @@
 import { Link, Route, Routes } from 'react-router-dom';
 import logo from '../../styles/images/logo.png';
 import AdminDashboard from './AdminDashboard';
-import IssuedBooks from './IssuedBooks';
-import ManageBooks from './ManageBooks';
-import RequestedBooks from './RequestedBook';
+import IssueBooks from './IssueBooks';
 import Setting from './Setting';
 import Users from './Users';
 import { IonIcon } from '@ionic/react';
 import { homeOutline, personOutline, notificationsOutline, logOutOutline, bookOutline, arrowRedoOutline, settingsOutline } from "ionicons/icons"
 
 import { useLocation } from 'react-router-dom';
+import AddBooks from './AddBooks';
+import BorrowedBooks from './BorrowedBooks';
 
 function AdminDashboardNav() {
     const location = useLocation();
@@ -38,19 +38,19 @@ function AdminDashboardNav() {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/admindashboard/managebooks">
+                        <Link to="/admindashboard/addbooks">
                             <span class="icon"><IonIcon icon={bookOutline}></IonIcon></span>
-                            <span class="title">Manage Books</span>
+                            <span class="title">Add Books</span>
                         </Link>
                     </li>
                     <li>
-                        <Link to="/admindashboard/requestedbooks">
+                        <Link to="/admindashboard/borrowedbooks">
                             <span class="icon"><IonIcon icon={notificationsOutline}></IonIcon></span>
-                            <span class="title">Book Request Data</span>
+                            <span class="title">Book Requests</span>
                         </Link>
                     </li>
                     <li>
-                        <Link to="/admindashboard/issuedbooks">
+                        <Link to="/admindashboard/issuebooks">
                             <span class="icon"><IonIcon icon={arrowRedoOutline}></IonIcon></span>
                             <span class="title">Issued Books</span>
                         </Link>
@@ -63,7 +63,7 @@ function AdminDashboardNav() {
                     </li>
 
                     <li>
-                        <Link to="/login">
+                        <Link to="/admin">
                             <span class="icon"><IonIcon icon={logOutOutline}></IonIcon></span>
                             <span class="title">Log Out</span>
                         </Link>
@@ -73,9 +73,9 @@ function AdminDashboardNav() {
             <Routes>
                 <Route path='/' element={<AdminDashboard />} />
                 <Route path='/users' element={<Users />} />
-                <Route path='/managebooks' element={<ManageBooks />} />
-                <Route path='/requestedbooks' element={<RequestedBooks />} />
-                <Route path='/issuedbooks' element={<IssuedBooks />} />
+                <Route path='/addbooks' element={<AddBooks />} />
+                <Route path='/borrowedbooks' element={<BorrowedBooks />} />
+                <Route path='/issuebooks' element={<IssueBooks />} />
                 <Route path='/setting' element={<Setting />} />
             </Routes>
         </div>

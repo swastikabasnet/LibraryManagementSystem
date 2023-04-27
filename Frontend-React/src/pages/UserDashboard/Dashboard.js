@@ -10,18 +10,27 @@ function Dashboard() {
     useEffect(() => {
         axios.get('http://localhost:8080/books')
             .then(response => {
-                console.log(response.data);
+                console.log(response.data[0].id);
                 setBooks(response.data);
             })
             .catch(error => {
                 console.log(error);
             });
     }, []);
+    const userId = sessionStorage.getItem('userId');
+    console.log(userId);
 
-    const [uBookTitle, usetbookTitle] = useState('');
-    const [uQuantity, usetquantity] = useState('');
-    const [uAvailability, usetAvailability] = useState('');
-    const [uDescription, usetdescription] = useState('');
+    const handleBorrow = (id) => {
+        axios.post('http://localhost:8080/borrow', { user: { id: userId }, book: { id: id } })
+            .then(response => {
+                console.log(response.data);
+                window.location.reload(true);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
+
 
     return (
         <div class="main">
@@ -61,7 +70,7 @@ function Dashboard() {
                                 <td>{book.availability}</td>
                                 <td>{book.description}</td>
                                 <td class="Request">
-                                    <button >Request</button>
+                                    <button type='button' onClick={() => handleBorrow(book.id)} >Request</button>
                                 </td>
                             </tr>
                         ))}
