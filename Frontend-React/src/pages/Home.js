@@ -13,7 +13,8 @@ function Home() {
                 <h1>Welcome to Hamro Library</h1>
                 <div class="topnav">
                     <Link class="active" to="/home">Home</Link>
-                    <Link to="/login">Login or Signup</Link>
+                    <Link to="/admin">Admin</Link>
+                    <Link to="/login">User</Link>
                 </div>
             </div>
             <div class="logo-container">

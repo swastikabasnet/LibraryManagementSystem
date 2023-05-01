@@ -38,12 +38,12 @@ function Dashboard() {
                 <div class="toggle">
                     <IonIcon icon={menuOutline}></IonIcon>
                 </div>
-                <div class="search">
+                {/* <div class="search">
                     <label>
                         <input type="text" placeholder="Search book" />
                         <IonIcon icon={searchOutline}></IonIcon>
                     </label>
-                </div>
+                </div> */}
                 <div class="user">
                     <img class="navLogo" src={logo} alt=" logo" />
                 </div>

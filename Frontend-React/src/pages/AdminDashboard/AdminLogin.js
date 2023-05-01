@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Link, Route, Routes } from 'react-router-dom';
 import Home from "../Home";
 
+
 function AdminLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -27,7 +28,8 @@ function AdminLogin() {
     return (
         <div class="AdminLogin-body">
             <div class="topnav">
-                <Link class="active" to="/home">Home</Link>
+                <Link class="active" to="/">Home</Link>
+                <Link class="active" to="/admin">Admin</Link>
             </div>
             <div class="flex-container">
                 <img src={logo} alt="" />
