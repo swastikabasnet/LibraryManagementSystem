@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import ForgotPassword from "../ForgotPassword";
 import { Link, Route, Routes } from "react-router-dom";
 import Home from "../Home";
-import {toast} from "react-hot-toast"
+import { toast } from "react-hot-toast"
 import { PasswordInput } from "../../components/PasswordInput";
 
 function Login() {
@@ -36,11 +36,20 @@ function Login() {
         requestBody
       );
       const user = response.data;
+      if (rememberMe) {
+        // Store the user ID and "Remember me" flag in the local storage if "Remember me" is checked
+        localStorage.setItem('userId', user.id);
+        localStorage.setItem('isRememberMe', true);
+      } else {
+        // Otherwise, store the user ID in the session storage and clear the "Remember me" flag from the local storage
+        localStorage.setItem('userId', user.id);
+        localStorage.setItem('isRememberMe', false);
+      }
       sessionStorage.setItem("userId", user.id); // Store the user ID in the session storage
       navigate("/dashboard", { state: user });
       toast.success("Successfully Sign In")
     } catch (error) {
-      setErrorMsg(error.response?.data?.errorMessage);  
+      setErrorMsg(error.response?.data?.errorMessage);
       toast.error("Failed to Sign In")
     }
   };
@@ -65,8 +74,14 @@ function Login() {
       }).catch(() => toast.error("Failed to Signup"));
   };
 
+  // remember me 
+  const handleRememberMeChange = (event) => {
+    setRememberMe(event.target.checked);
+  };
+
+
   return (
-    
+
     <div class="login-Body">
       <div class="topnav">
         <Link class="active" to="/">
@@ -166,7 +181,7 @@ function Login() {
         <div class="form-container sign-in-container">
           <form action="#">
             <h1>Sign in</h1>
-            <label style={{width:"100%"}}>
+            <label style={{ width: "100%" }}>
               <input
                 type="email"
                 placeholder="Email"
@@ -178,7 +193,7 @@ function Login() {
                 }}
               />
             </label>
-            <label style={{width:"100%"}}>
+            <label style={{ width: "100%" }}>
               <PasswordInput
                 type="password"
                 placeholder="Password"
@@ -199,10 +214,7 @@ function Login() {
                 type="checkbox"
                 checked={rememberMe}
                 name="remember"
-                onChange={(e) => {
-                  setRememberMe(e.target.checked);
-                }}
-              />
+                onChange={handleRememberMeChange} />
               <div style={{ margin: "15px", fontSize: "14px" }}>
                 Remember Me
               </div>

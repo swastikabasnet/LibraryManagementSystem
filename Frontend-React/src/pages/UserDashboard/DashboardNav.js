@@ -1,4 +1,4 @@
-import { Link, Outlet} from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import logo from '../../styles/images/logo.png';
 
 import { IonIcon } from '@ionic/react';
@@ -8,12 +8,13 @@ import '../../UserDashboardcss/UserDashboard.css';
 
 
 
+
 function DashboardNav() {
     const location = useLocation();
     console.log(location.state);
     return (
         <div class="container" id="container">
-                {/* <div class="user">
+            {/* <div class="user">
                     <img class="navLogo" src={logo1} alt=" logo" />
                 </div> */}
             <div class="navigation">
@@ -48,14 +49,17 @@ function DashboardNav() {
                     </li>
 
                     <li>
-                        <Link to="/login">
+                        <Link to="/login" onClick={() => {
+                            localStorage.clear(); // clear all items in localStorage
+                            sessionStorage.clear(); // clear all items in sessionStorage
+                        }}>
                             <span class="icon"><IonIcon icon={logOutOutline}></IonIcon></span>
                             <span class="title">Log Out</span>
                         </Link>
                     </li>
                 </ul>
             </div>
-            <Outlet/>
+            <Outlet />
         </div>
 
     );

@@ -26,19 +26,19 @@ function AdminDashboard() {
     const [totalbooks, settotalbooks] = useState('');
 
     // dynamic data to get in Admin Dashboard
-    useEffect(() =>{
-        axios.get('http://localhost:8080/Users')
-        .then(response => {
-            settotalmenmbers(response.data.length)
-        })
-    },[]);
+    useEffect(() => {
+        axios.get('http://localhost:8080/users')
+            .then(response => {
+                settotalmenmbers(response.data.length)
+            })
+    }, []);
 
-    useEffect(() =>{
+    useEffect(() => {
         axios.get('http://localhost:8080/Books')
-        .then(response => {
-            settotalbooks(response.data.length)
-        })
-    },[]);
+            .then(response => {
+                settotalbooks(response.data.length)
+            })
+    }, []);
 
     useEffect(() => {
         axios.get('http://localhost:8080/books')

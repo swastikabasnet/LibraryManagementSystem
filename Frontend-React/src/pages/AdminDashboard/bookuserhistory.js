@@ -44,7 +44,7 @@ function BorrowedBooks() {
 
 
     const getUser = (id) => {
-        return axios.get('http://localhost:8080/Users/' + id)
+        return axios.get('http://localhost:8080/users/' + id)
             .then(response => {
                 return { id, name: response.data.name };
             })

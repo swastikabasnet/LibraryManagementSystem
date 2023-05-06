@@ -10,7 +10,7 @@ function VerifyOtp() {
     const navigate = useNavigate();
 
     const otpConfirmation = () => {
-        axios.post("http://localhost:8080/Users/verify_otp", null, {
+        axios.post("http://localhost:8080/users/verify_otp", null, {
             params: {
                 otp: otp,
             },

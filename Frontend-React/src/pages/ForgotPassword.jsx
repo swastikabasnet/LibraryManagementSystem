@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import logo from "../styles/images/logo.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
 import styles from "../styles/forgot-password.module.css";
 
 function ForgotPassword() {
@@ -12,7 +11,7 @@ function ForgotPassword() {
 
   const confirmEmail = () => {
     axios
-      .post("http://localhost:8080/Users/send_otp", {
+      .post("http://localhost:8080/users/send_otp", {
         email: email,
       })
       .then((data) => {
@@ -46,7 +45,7 @@ function ForgotPassword() {
           </nav>
         </header>
         <form onSubmit={handleSubmit} className={styles.form} action="">
-            <h1>Forgot Password</h1>
+          <h1>Forgot Password</h1>
           <input
             type="email"
             placeholder="Enter your registered email"

@@ -1,10 +1,9 @@
-import "../../styles/MyAccount.css";
-import "../../UserDashboardcss/MyAccount.css"
+// import "../../styles/MyAccount.css";
+// import "../../UserDashboardcss/MyAccount.css"
 
 function MyAccount() {
     return (
         <div class="main">
-            
             <div class="form">
                 <h2>My Account</h2>
                 <form>

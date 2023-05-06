@@ -9,7 +9,7 @@ function Users() {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/Users')
+        axios.get('http://localhost:8080/users')
             .then(response => {
                 console.log(response.data);
                 setUsers(response.data);

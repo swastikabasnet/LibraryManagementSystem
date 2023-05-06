@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link, Route, Routes } from 'react-router-dom';
 import Home from "../Home";
-import {toast} from "react-hot-toast"
+import { toast } from "react-hot-toast"
 
 
 function AdminLogin() {
