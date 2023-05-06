@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import ForgotPassword from "../ForgotPassword";
 import { Link, Route, Routes } from "react-router-dom";
 import Home from "../Home";
-
+import {toast} from "react-hot-toast"
 import { PasswordInput } from "../../components/PasswordInput";
 
 function Login() {
@@ -38,8 +38,10 @@ function Login() {
       const user = response.data;
       sessionStorage.setItem("userId", user.id); // Store the user ID in the session storage
       navigate("/dashboard", { state: user });
+      toast.success("Successfully Sign In")
     } catch (error) {
-      setErrorMsg(error.response.data.errorMessage);
+      setErrorMsg(error.response?.data?.errorMessage);  
+      toast.error("Failed to Sign In")
     }
   };
 
@@ -59,7 +61,8 @@ function Login() {
       .post("http://localhost:8080/register", requestBody)
       .then((response) => {
         navigate("/login", { state: response.data });
-      });
+        toast.success("Successfully Signed in");
+      }).catch(() => toast.error("Failed to Signup"));
   };
 
   return (

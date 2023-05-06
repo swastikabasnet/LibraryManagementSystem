@@ -1,15 +1,9 @@
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Outlet} from 'react-router-dom';
 import logo from '../../styles/images/logo.png';
-import AdminDashboard from './AdminDashboard';
-import IssueBooks from './IssueBooks';
-import Setting from './Setting';
-import Users from './Users';
 import { IonIcon } from '@ionic/react';
 import { homeOutline, personOutline, notificationsOutline, logOutOutline, bookOutline, arrowRedoOutline, settingsOutline } from "ionicons/icons"
-
 import { useLocation } from 'react-router-dom';
-import AddBooks from './AddBooks';
-import BorrowedBooks from './BorrowedBooks';
+import '../../AdminDashboardcss/Dashboard.css'
 
 function AdminDashboardNav() {
     const location = useLocation();
@@ -56,9 +50,21 @@ function AdminDashboardNav() {
                         </Link>
                     </li>
                     <li>
+                        <Link to="/admindashboard/bookissuehistory">
+                            <span class="icon"><IonIcon icon={arrowRedoOutline}></IonIcon></span>
+                            <span class="title">Book Issue History</span>
+                        </Link>
+                    </li>
+                    <li>
                         <Link to="/admindashboard/setting">
                             <span class="icon"><IonIcon icon={settingsOutline}></IonIcon></span>
                             <span class="title">Settings</span>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/admindashboard/addadmin">
+                            <span class="icon"><IonIcon icon={settingsOutline}></IonIcon></span>
+                            <span class="title">Add Admin</span>
                         </Link>
                     </li>
 
@@ -70,14 +76,7 @@ function AdminDashboardNav() {
                     </li>
                 </ul>
             </div>
-            <Routes>
-                <Route path='/' element={<AdminDashboard />} />
-                <Route path='/users' element={<Users />} />
-                <Route path='/addbooks' element={<AddBooks />} />
-                <Route path='/borrowedbooks' element={<BorrowedBooks />} />
-                <Route path='/issuebooks' element={<IssueBooks />} />
-                <Route path='/setting' element={<Setting />} />
-            </Routes>
+            <Outlet/>
         </div>
     );
 }

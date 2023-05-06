@@ -34,13 +34,14 @@
 }
 
 .row {
-  background-color: rgba(255, 255, 255, .7);
+  background-color: rgba(255, 255, 255, .4);
   color: black;
-  text-align: center;
   padding: 2em 2em 0.5em;
-  width: 30%;
-  margin: 13em auto;
   border-radius: 4px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .row h1 {
@@ -49,7 +50,13 @@
 
 .row .form-group {
   margin: 0.5em 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
 }
+
 
 .row .form-group label {
   /* display: block; */

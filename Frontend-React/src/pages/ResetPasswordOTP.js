@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import logo from '../styles/images/logo.png';
 import axios from 'axios';
 
+
 function ResetPasswordOTP() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');

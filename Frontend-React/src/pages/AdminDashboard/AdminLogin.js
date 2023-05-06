@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link, Route, Routes } from 'react-router-dom';
 import Home from "../Home";
+import {toast} from "react-hot-toast"
 
 
 function AdminLogin() {
@@ -20,9 +21,11 @@ function AdminLogin() {
         const requestBody = { email: email, password: password };
         try {
             const response = await axios.post("http://localhost:8080/adminLogin", requestBody);
-            navigate("/adminDashboard", { state: response.data });
+            navigate("/adminDashboard", { state: response?.data });
+            toast.success("Successfully logged in");
         } catch (error) {
-            setErrorMsg(error.response.data.errorMessage);
+            setErrorMsg(error.response?.data?.errorMessage);
+            toast.error("Failed to login");
         }
     }
     return (

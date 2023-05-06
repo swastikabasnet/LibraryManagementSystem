@@ -5,6 +5,7 @@ import logo from '../../styles/images/admin.png';
 import { useState } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import {toast} from "react-hot-toast";
 
 
 function IssuedBooks() {
@@ -17,7 +18,8 @@ function IssuedBooks() {
         var requestBody = { "bookId": bookId, "userId": userId }
         await axios.post("http://localhost:8080/borrow", requestBody).then(response => {
             navigate("/admindashboard/issuebooks", { state: response.data })
-        })
+            toast.success("Successfully Books Issued");
+        }).catch(() => toast.error("Failed to Issue Book"));
     }
 
     return (

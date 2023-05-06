@@ -1,9 +1,9 @@
-import logo from '../../styles/images/user.png';
+
 import "../../styles/BorrowedBooks.css";
-import { IonIcon } from '@ionic/react';
-import { menuOutline } from "ionicons/icons"
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../../UserDashboardcss/BookRequest.css'
 
 function MyBorrowedBook() {
     const [bookTitle, setBookTitle] = useState({});
@@ -53,15 +53,6 @@ function MyBorrowedBook() {
 
     return (
         <div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <IonIcon icon={menuOutline}></IonIcon>
-                </div>
-                <div class="user">
-                    <img class="navLogo" src={logo} alt="logo" />
-                </div>
-            </div>
-
             <div id="dashboard-container">
                 <table class="dashboard-table" id="book-list">
                     <thead>

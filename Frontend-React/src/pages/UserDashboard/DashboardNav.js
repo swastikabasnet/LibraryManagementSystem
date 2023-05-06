@@ -1,11 +1,11 @@
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Outlet} from 'react-router-dom';
 import logo from '../../styles/images/logo.png';
-import Dashboard from './Dashboard';
-import MyAccount from './MyAccount';
+
 import { IonIcon } from '@ionic/react';
 import { homeOutline, personOutline, notificationsOutline, logOutOutline } from "ionicons/icons"
 import { useLocation } from 'react-router-dom';
-import MyBorrowedBook from './MyBorrowedBook';
+import '../../UserDashboardcss/UserDashboard.css';
+
 
 
 function DashboardNav() {
@@ -13,11 +13,16 @@ function DashboardNav() {
     console.log(location.state);
     return (
         <div class="container" id="container">
+                {/* <div class="user">
+                    <img class="navLogo" src={logo1} alt=" logo" />
+                </div> */}
             <div class="navigation">
+                <div class="topbar" >
+                    <img class="user_logo" src={logo} alt="logo" />
+                </div>
                 <ul>
                     <li>
                         <Link to="/dashboard">
-                            <span> <img class="user_logo" src={logo} alt="logo" /></span>
                             <span class="title_title">Hamro Library</span>
                         </Link>
                     </li>
@@ -50,11 +55,7 @@ function DashboardNav() {
                     </li>
                 </ul>
             </div>
-            <Routes>
-                <Route path='/' element={<Dashboard />} />
-                <Route path='/myaccount' element={<MyAccount />} />
-                <Route path='/myborrowedbooks' element={<MyBorrowedBook />} />
-            </Routes>
+            <Outlet/>
         </div>
 
     );

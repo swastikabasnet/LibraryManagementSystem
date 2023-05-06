@@ -1,5 +1,6 @@
 import "./PasswordInput.css";
 import { useState } from "react";
+import {FaEyeSlash,FaEye} from "react-icons/fa";
 
 export function PasswordInput(props) {
   const [inputType, setInputType] = useState("password");
@@ -9,13 +10,13 @@ export function PasswordInput(props) {
 
   const togglePasswordIcon =
     inputType === "password"
-      ? "fa-sharp fa-solid fa-eye-slash"
-      : "fa-sharp fa-solid fa-eye";
+      ? <FaEyeSlash onClick={togglePasswordInputType}/>
+      : <FaEye onClick={togglePasswordInputType}/>;
 
   return (
     <div className="password-container">
       <input {...props} type={inputType} />
-      <i className={togglePasswordIcon} onClick={togglePasswordInputType}></i>
+      {togglePasswordIcon}
     </div>
   );
 }

@@ -4,6 +4,8 @@ import { book, library, menuOutline, people, reader, reload, searchOutline } fro
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import '../../AdminDashboardcss/Dashboard.css'
+
 function AdminDashboard() {
 
     const [books, setBooks] = useState([]);
@@ -20,6 +22,24 @@ function AdminDashboard() {
     const [uQuantity, usetquantity] = useState('');
     const [uAvailability, usetAvailability] = useState('');
     const [uDescription, usetdescription] = useState('');
+    const [totalmenmbers, settotalmenmbers] = useState('');
+    const [totalbooks, settotalbooks] = useState('');
+
+    // dynamic data to get in Admin Dashboard
+    useEffect(() =>{
+        axios.get('http://localhost:8080/Users')
+        .then(response => {
+            settotalmenmbers(response.data.length)
+        })
+    },[]);
+
+    useEffect(() =>{
+        axios.get('http://localhost:8080/Books')
+        .then(response => {
+            settotalbooks(response.data.length)
+        })
+    },[]);
+
     useEffect(() => {
         axios.get('http://localhost:8080/books')
             .then(response => {
@@ -62,6 +82,7 @@ function AdminDashboard() {
             }).catch(err => console.log(err));
     }
 
+
     return (
         <div class="main">
             <div class="topbar">
@@ -81,7 +102,7 @@ function AdminDashboard() {
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers">1,504</div>
+                        <div class="numbers">{totalbooks}</div>
                         <div class="cardName">Total Books</div>
                     </div>
 
@@ -114,7 +135,7 @@ function AdminDashboard() {
 
                 <div class="card">
                     <div>
-                        <div class="numbers">120</div>
+                        <div class="numbers">{totalmenmbers}</div>
                         <div class="cardName">Total Members</div>
                     </div>
 
