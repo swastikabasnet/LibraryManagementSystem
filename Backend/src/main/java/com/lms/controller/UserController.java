@@ -1,6 +1,5 @@
 package com.lms.controller;
 
-
 import com.lms.exception.*;
 import com.lms.model.LoginRequest;
 import com.lms.model.OtpRequest;
@@ -24,14 +23,12 @@ public class UserController {
     @Autowired
     private EmailOtpService emailOtpService;
 
-
-
-    @GetMapping("/Users")
+    @GetMapping("/users")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/Users/{id}")
+    @GetMapping("/users/{id}")
     public User getUserByID(@PathVariable long id) {
         return userService.getUserByID(id);
     }
@@ -39,11 +36,11 @@ public class UserController {
     @PostMapping("/register")
     public User addUser(@RequestBody User user) {
         User getUser = userService.getUserByEmail(user.getEmail());
-        if (getUser==null){
-            if (userService.getUserByPhoneNumber(user.getPhoneNumber())!=null){
+        if (getUser == null) {
+            if (userService.getUserByPhoneNumber(user.getPhoneNumber()) != null) {
                 throw new PhoneNumberAlreadyExistException();
             } else {
-               return userService.addUser(user);
+                return userService.addUser(user);
 
             }
         } else {
@@ -51,7 +48,7 @@ public class UserController {
         }
     }
 
-    @PutMapping("/Users/{id}")
+    @PutMapping("/users/{id}")
     public User updateUser(@RequestBody User user, @PathVariable long id) {
         User getUser = userService.getUserByID(id);
 
@@ -63,7 +60,7 @@ public class UserController {
         return userService.updateUser(getUser);
     }
 
-    @DeleteMapping("/Users/{id}")
+    @DeleteMapping("/users/{id}")
     public void deleteUser(@PathVariable long id) {
         User user = userService.getUserByID(id);
         if (user.getId() == id) {
@@ -72,11 +69,13 @@ public class UserController {
             throw new UserNotFoundException(id);
         }
     }
+
     // for generating random otp of 6 digits
     Random random = new Random();
     int otp = 0;
     String emailOtpReset;
-    @PostMapping("/Users/send_otp")
+
+    @PostMapping("/users/send_otp")
     public void sendOtp(@RequestBody OtpRequest otpRequest) {
         emailOtpReset = otpRequest.getEmail();
         // Check if email exist
@@ -90,7 +89,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/Users/verify_otp")
+    @PostMapping("/users/verify_otp")
     public ResponseEntity<User> verifyOtp(@RequestParam("otp") int otpCode) {
         // check if email exist
         User getUser = userService.getUserByEmail(emailOtpReset);
@@ -102,21 +101,19 @@ public class UserController {
         }
     }
 
-
-    @PutMapping("/User/otp/reset_password")
-    public void resetPasswordViaOTP(@RequestBody User user){
+    @PutMapping("/user/otp/reset_password")
+    public void resetPasswordViaOTP(@RequestBody User user) {
         User getUser = userService.getUserByEmail(emailOtpReset);
         getUser.setPassword(user.getPassword());
         userService.updateUser(getUser);
     }
 
-
     @PostMapping("/login")
-    public @ResponseBody User login(@RequestBody LoginRequest loginRequest, HttpSession session){
+    public @ResponseBody User login(@RequestBody LoginRequest loginRequest, HttpSession session) {
         User user = userService.getUserByEmail(loginRequest.getEmail());
-        System.out.println(loginRequest.getEmail() +" "+ loginRequest.getPassword());
+        System.out.println(loginRequest.getEmail() + " " + loginRequest.getPassword());
 
-        if (user!=null && user.getPassword().equals(loginRequest.getPassword())){
+        if (user != null && user.getPassword().equals(loginRequest.getPassword())) {
             session.setAttribute("userId", user.getId()); // Store the user ID in the session
             return user;
         } else {

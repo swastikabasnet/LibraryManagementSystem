@@ -31,7 +31,7 @@ public class AdminController {
     }
 
     @PostMapping("/adminLogin")
-    public @ResponseBody Admin login(@RequestBody LoginRequest loginRequest){
+    public @ResponseBody Admin login(@RequestBody LoginRequest loginRequest) {
         return adminService.login(loginRequest);
     }
 

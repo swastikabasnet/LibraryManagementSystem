@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 public class BorrowBookController {
-    
+
     @Autowired
     private BorrowService borrowService;
     @Autowired
@@ -49,18 +49,15 @@ public class BorrowBookController {
         return borrowService.requestBook(borrow);
     }
 
-
     @PutMapping("/borrow/accept")
     public Borrow acceptRequest(@RequestBody Borrow borrow) {
         return borrowService.acceptRequest(borrow);
     }
 
-
     @PutMapping("/borrow/reject")
-    public Borrow rejectRequest(@RequestBody Borrow borrow){
+    public Borrow rejectRequest(@RequestBody Borrow borrow) {
         return borrowService.rejectRequest(borrow);
     }
-
 
     @PutMapping("/borrow/return")
     public Borrow returnBook(@RequestBody Borrow borrow) {
