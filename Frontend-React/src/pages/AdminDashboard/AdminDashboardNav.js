@@ -1,4 +1,4 @@
-import { Link, Outlet} from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import logo from '../../styles/images/logo.png';
 import { IonIcon } from '@ionic/react';
 import { homeOutline, personOutline, notificationsOutline, logOutOutline, bookOutline, arrowRedoOutline, settingsOutline } from "ionicons/icons"
@@ -76,7 +76,7 @@ function AdminDashboardNav() {
                     </li>
                 </ul>
             </div>
-            <Outlet/>
+            <Outlet />
         </div>
     );
 }

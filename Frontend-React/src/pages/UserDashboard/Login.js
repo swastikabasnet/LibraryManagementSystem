@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ForgotPassword from "../ForgotPassword";
 import { Link, Route, Routes } from "react-router-dom";
-import Home from "../Home";
+import Home from "../../components/home";
 import { toast } from "react-hot-toast"
 import { PasswordInput } from "../../components/PasswordInput";
 

@@ -1,8 +1,39 @@
 
+import { useEffect, useState } from "react";
 import "../../styles/MyAccount.css";
 import "../../UserDashboardcss/MyAccount.css"
+import axios from "axios";
 
 function MyAccount() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [password, setPassword] = useState("");
+    let userId = sessionStorage.getItem("userId");
+
+    useEffect(() => {
+        axios.get(`http://localhost:8080/users/${userId}`)
+            .then(res => {
+                setName(res.data.name);
+                setEmail(res.data.email);
+                setPhoneNumber(res.data.phoneNumber);
+                setPassword(res.data.password);
+            })
+    }, []);
+
+
+    const updateProfile = async () => {
+        axios.put('http://localhost:8080/users/' + userId, {
+            id: userId,
+            name: name,
+            email: email,
+            phoneNumber: phoneNumber,
+            password: password
+        }).then(res => {
+            window.location.reload(false);
+        }).catch(err => console.log(err));
+    }
+
     return (
         <div class="main">
             <div class="form">
@@ -11,20 +42,23 @@ function MyAccount() {
                     <div class="mb-3">
                         <div class="col-md-6">
                             <label class="small mb-1" for="inputFirstName">Full Name</label>
-                            <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Valerie" />
+                            <input class="form-control" id="inputFirstName" type="text" placeholder={name}
+                                onChange={(e) => (setName(e.target.value))} />
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                        <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com" />
+                        <input class="form-control" id="inputEmailAddress" type="email" placeholder={email}
+                            onChange={(e) => (setEmail(e.target.value))} />
                     </div>
                     <div class="mb-3">
                         <div class="col-md-6">
                             <label class="small mb-1" for="inputPhone">Phone number</label>
-                            <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567" />
+                            <input class="form-control" id="inputPhone" type="tel" placeholder={phoneNumber}
+                                onChange={(e) => (setPhoneNumber(e.target.value))} />
                         </div>
                     </div>
-                    <button class="btn btn-primary" type="button">Save changes</button>
+                    <button class="btn btn-primary" type="button" onClick={updateProfile}>Save changes</button>
                 </form>
             </div>
         </div>

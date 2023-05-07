@@ -34,17 +34,11 @@ function AdminDashboard() {
     }, []);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/Books')
-            .then(response => {
-                settotalbooks(response.data.length)
-            })
-    }, []);
-
-    useEffect(() => {
         axios.get('http://localhost:8080/books')
             .then(response => {
                 console.log(response.data);
                 setBooks(response.data);
+                settotalbooks(response.data.length);
             })
             .catch(error => {
                 console.log(error);

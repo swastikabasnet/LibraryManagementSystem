@@ -31,12 +31,12 @@ const Navbar = () => {
       icon: <CommentRoundedIcon />,
     },
     {
-        text: "User",
-        icon: <CommentRoundedIcon />,
-      },
+      text: "User",
+      icon: <CommentRoundedIcon />,
+    },
   ];
   return (
-    <nav>
+    <nav class="home-nav">
       <div className="nav-logo-container">
         <img src={Logo} alt="" />
       </div>
