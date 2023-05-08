@@ -1,4 +1,4 @@
-import "../../styles/IssueBook.css";
+import "../../AdminDashboardcss/Issuebooks.css";
 import { IonIcon } from '@ionic/react';
 import { menuOutline } from "ionicons/icons";
 import logo from '../../styles/images/admin.png';

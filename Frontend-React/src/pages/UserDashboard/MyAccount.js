@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import "../../styles/MyAccount.css";
+// import "../../styles/MyAccount.css";
 import "../../UserDashboardcss/MyAccount.css"
 import axios from "axios";
 

@@ -18,6 +18,15 @@ form {
     display: flex;
     flex-direction: column;
 }
+.form {
+    /* background-color: #d9e6d1;
+    border-radius: 31px;
+    box-shadow: 0 0 10px #aaa; */
+    padding: 20px;
+    margin: auto;
+    width: 70%;
+    display: block;
+}
 
 label {
     margin-top: 10px;
