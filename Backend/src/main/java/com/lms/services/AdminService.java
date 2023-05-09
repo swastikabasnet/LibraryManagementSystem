@@ -37,7 +37,7 @@ public class AdminService {
         }
     }
 
-    public void deleteUser(long id) {
+    public void deleteAdmin(long id) {
         if (adminRepository.existsById(id)) {
             adminRepository.deleteById(id);
         } else {

@@ -19,7 +19,7 @@ public class PDFGeneratorService {
         this.userList = userList;
     }
 
-    public void generate(HttpServletResponse response) throws DocumentException, IOException {
+    public void generateUsersPDF(HttpServletResponse response) throws DocumentException, IOException {
 
         // Creating the Object of Document
         Document document = new Document(PageSize.A4);

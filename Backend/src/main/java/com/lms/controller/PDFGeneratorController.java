@@ -20,8 +20,8 @@ public class PDFGeneratorController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/pdf/students")
-    public void generatePdf(HttpServletResponse response) throws DocumentException, IOException {
+    @GetMapping("/pdf/users")
+    public void generateUsersPDF(HttpServletResponse response) throws DocumentException, IOException {
 
         response.setContentType("application/pdf");
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -34,7 +34,7 @@ public class PDFGeneratorController {
 
         PDFGeneratorService generator = new PDFGeneratorService();
         generator.setUserList(userList);
-        generator.generate(response);
+        generator.generateUsersPDF(response);
 
     }
 }

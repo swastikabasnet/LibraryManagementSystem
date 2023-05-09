@@ -26,8 +26,8 @@ public class AdminController {
     }
 
     @DeleteMapping("/admin/{id}")
-    public void deleteUser(@PathVariable long id) {
-        adminService.deleteUser(id);
+    public void deleteAdmin(@PathVariable long id) {
+        adminService.deleteAdmin(id);
     }
 
     @PostMapping("/adminLogin")
