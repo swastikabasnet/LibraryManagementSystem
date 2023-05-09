@@ -1,0 +1,94 @@
+.verifyotp {
+    background-image: url("./images/Background.jpg");
+    height: 100vh;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.btn {
+    color: black;
+    text-decoration: none;
+}
+
+.verifyotp h1 {
+    text-align: center;
+    color: #fff;
+
+}
+
+.verifyotp h2 {
+    text-align: center;
+    margin-top: 10;
+    font-size: x-large;
+    color: #000000;
+}
+
+.verifyotp img {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-size: 18px;
+}
+
+.row {
+    background-color: rgba(255, 255, 255, .7);
+    color: black;
+    text-align: center;
+    padding: 2em 2em 0.5em;
+    width: 30%;
+    margin: 13em auto;
+    border-radius: 4px;
+}
+
+.row h1 {
+    font-size: 2.5em;
+}
+
+.row .form-group {
+    margin: 0.5em 0;
+}
+
+.row .form-group label {
+    /* display: block; */
+    color: black;
+    text-align: left;
+    font-weight: 600;
+}
+
+.row .form-group input {
+
+    /* display: block; */
+    padding: 0.5em 0;
+    width: 85%;
+    margin: 1em;
+    align-items: center;
+    /* background-color: inherit; */
+    background-color: #ffffff;
+    border: none;
+    border-bottom: 1px solid #555;
+    color: #000000;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.row .form-group button {
+    padding: 0.5em 0;
+    width: 85%;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    align-items: center;
+    /* background-color: inherit; */
+    background-color: #407e1a;
+    border: none;
+    border-bottom: 1px solid #555;
+    color: #ffffff;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.row .form-group button:hover,
+.row .form-group button:focus {
+    background-color: #2d6d05;
+}

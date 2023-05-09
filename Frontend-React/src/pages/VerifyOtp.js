@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import logo from '../styles/images/logo.png';
 import axios from 'axios';
+import "../styles/verifyotp.css";
 
 function VerifyOtp() {
 
@@ -26,17 +27,17 @@ function VerifyOtp() {
     }
 
     return (
-        <div>
+        <div class="verifyotp">
             <div class="flex-container">
                 <img src={logo} alt='logo' />
-                <h2>Hamro Library</h2>
+                <h1>Hamro Library</h1>
             </div>
             <div class="row">
-                <h1>Validate OTP</h1>
-                <h6 class="information-text">Please enter the otp sent in your email</h6>
+                <h2>Validate OTP</h2>
+                <p class="information-text">Please enter the otp sent in your email</p>
                 <div class="form-group">
                     <input type="OTP" placeholder="Enter your OTP here" onChange={(e) => { setOtp(e.target.value) }} />
-                    <button><a class="btn" onClick={() => otpConfirmation()}>Confirm Otp</a></button>
+                    <button class="btn" onClick={otpConfirmation}>Confirm Otp</button>
                 </div>
             </div>
         </div>

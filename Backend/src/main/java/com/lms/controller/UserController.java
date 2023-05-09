@@ -102,8 +102,9 @@ public class UserController {
     }
 
     @PutMapping("/user/otp/reset_password")
-    public void resetPasswordViaOTP(@RequestBody User user) {
-        User getUser = userService.getUserByEmail(emailOtpReset);
+    public void resetPasswordViaOTP(@RequestBody User user, @RequestParam("email") String email)  {
+        System.out.println(email);
+        User getUser = userService.getUserByEmail(email);
         getUser.setPassword(user.getPassword());
         userService.updateUser(getUser);
     }

@@ -4,6 +4,7 @@ import logo from "../styles/images/logo.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "../styles/forgot-password.module.css";
+import { toast } from "react-hot-toast";
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -16,11 +17,13 @@ function ForgotPassword() {
       })
       .then((data) => {
         // handle the response from the server
+        sessionStorage.setItem('email', email);
         console.log(data);
         navigate("/verify_otp");
       })
       .catch((error) => {
         console.error("Error:", error);
+        toast.error("Verification error");
       });
   };
   const handleSubmit = (event) => {
