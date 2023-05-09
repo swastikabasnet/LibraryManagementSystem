@@ -19,42 +19,38 @@ function Users() {
             });
     }, []);
     return (
-        <div>
-            <div>
-                <div class="main">
-                    <div class="topbar">
-                        <div class="toggle">
-                            <span class="icon"><IonIcon icon={menuOutline}></IonIcon></span>
-                        </div>
-                        <div class="user">
-                            <img class="navLogo" src={logo} alt="logo" />
-                        </div>
-                    </div>
-                    <div id="dashboard-container">
-                        <table class="dashboard-table" id="book-list">
-                            <thead>
-                                <tr>
-                                    <th>User ID</th>
-                                    <th>User Name</th>
-                                    <th>Email Address</th>
-                                    <th>Contact</th>
-                                    <th>Number of Borrows</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {users.map(user => (
-                                    <tr key={user.id}>
-                                        <td>{user.id}</td>
-                                        <td>{user.name}</td>
-                                        <td>{user.email}</td>
-                                        <td>{user.phoneNumber}</td>
-                                        <td>{user.numBookBorrowed}</td>
-                                    </tr>))}
-                            </tbody>
-                        </table>
-
-                    </div>
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <span class="icon"><IonIcon icon={menuOutline}></IonIcon></span>
                 </div>
+                <div class="user">
+                    <img class="navLogo" src={logo} alt="logo" />
+                </div>
+            </div>
+            <div id="dashboard-container">
+                <table class="dashboard-table" id="book-list">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>User Name</th>
+                            <th>Email Address</th>
+                            <th>Contact</th>
+                            <th>Number of Borrows</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users.map(user => (
+                            <tr key={user.id}>
+                                <td>{user.id}</td>
+                                <td>{user.name}</td>
+                                <td>{user.email}</td>
+                                <td>{user.phoneNumber}</td>
+                                <td>{user.numBookBorrowed}</td>
+                            </tr>))}
+                    </tbody>
+                </table>
+
             </div>
         </div>
     );

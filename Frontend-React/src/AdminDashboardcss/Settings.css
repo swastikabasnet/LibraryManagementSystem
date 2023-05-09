@@ -73,6 +73,15 @@ button {
     width: auto;
 }
 
+.save-button {
+    width: 95%;
+}
+
+#setting-nav {
+    display: flex;
+    justify-content: center;
+}
+
 @media screen and (min-width: 768px) {
 
     /* Increase the font size for larger screens */
