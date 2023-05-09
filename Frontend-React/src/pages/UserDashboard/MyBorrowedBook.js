@@ -3,7 +3,7 @@ import "../../styles/BorrowedBooks.css";
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../../UserDashboardcss/BookRequest.css'
+import '../../UserDashboardcss/BookRequest.css';
 
 function MyBorrowedBook() {
     const [bookTitle, setBookTitle] = useState({});

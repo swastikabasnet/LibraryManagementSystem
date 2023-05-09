@@ -27,14 +27,14 @@ body {
     width: 100%;
 }
 
-#dashboard-container {
+/* #dashboard-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 5%;
     margin-left: 5%;
     margin-right: 2%;
-}
+} */
 
 #book-list {
     margin: 0 auto;
@@ -208,7 +208,6 @@ body {
 }
 
 
-
 .toggle {
     position: relative;
     width: 60px;
@@ -277,6 +276,15 @@ body {
     position: relative;
 }
 
+.form {
+    /* background-color: #d9e6d1;
+    border-radius: 31px;
+    box-shadow: 0 0 10px #aaa; */
+    padding: 20px;
+    margin: auto;
+    width: 70%;
+    display: block;
+}
 /* ====================== Responsive Design ========================== */
 
 @media (max-width: 991px) {

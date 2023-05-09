@@ -62,13 +62,6 @@ function AdminDashboardNav() {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/admindashboard/addadmin">
-                            <span class="icon"><IonIcon icon={settingsOutline}></IonIcon></span>
-                            <span class="title">Add Admin</span>
-                        </Link>
-                    </li>
-
-                    <li>
                         <Link to="/admin">
                             <span class="icon"><IonIcon icon={logOutOutline}></IonIcon></span>
                             <span class="title">Log Out</span>
