@@ -19,11 +19,11 @@ function DashboardNav() {
                 </div> */}
             <div class="navigation">
                 <div class="topbar" >
-                    <img class="user_logo" src={logo} alt="logo" />
                 </div>
                 <ul>
                     <li>
                         <Link to="/dashboard">
+                            <span> <img class="user_logo" src={logo} alt="logo" /></span>
                             <span class="title_title">Hamro Library</span>
                         </Link>
                     </li>

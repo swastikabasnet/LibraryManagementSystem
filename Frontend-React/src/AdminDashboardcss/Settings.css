@@ -13,7 +13,7 @@ h1 {
 
 h2 {
     margin-left: 31%;
-	margin-top:2%
+    margin-top: 2%
 }
 
 
@@ -48,7 +48,7 @@ textarea {
 
 button {
     display: inline-block;
-    background-color: #4CAF50;
+    background-color: #378109;
     color: #f3efef;
     padding: 0.5rem;
     border: none;
@@ -56,26 +56,30 @@ button {
     cursor: pointer;
     margin-top: 1rem;
     margin-left: 26%;
+    width: 90%;
 }
 
 button:hover {
-    background-color: #3e8e41;
+    background-color: #2d6d05;
 }
 
 
 /* Make the buttons responsive */
 
 button {
-    font-size: 1.25rem;
+    font-size: larger;
     padding: 0.5rem 1rem;
     margin: 0.5rem;
+    width: auto;
 }
 
 @media screen and (min-width: 768px) {
+
     /* Increase the font size for larger screens */
     html {
         font-size: 18px;
     }
+
     /* Increase the width of the form for larger screens */
     form {
         max-width: 600px;

@@ -169,8 +169,8 @@ function AdminDashboard() {
                                     <td>{book.availability}</td>
                                     <td>{book.description}</td>
                                     <td class="editOrDelete">
-                                        <button onClick={() => handleEdit(book.id)}>edit</button>
-                                        <button onClick={() => handleDelete(book.id)}>delete</button>
+                                        <button onClick={() => handleEdit(book.id)}>Edit</button>
+                                        <button onClick={() => handleDelete(book.id)}>Delete</button>
                                     </td>
                                 </tr>
                         ))}

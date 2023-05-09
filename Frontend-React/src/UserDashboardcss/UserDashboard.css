@@ -48,8 +48,8 @@ body {
 
 .dashboard-table {
     border-collapse: collapse;
-    width: 120%;
-    max-width: 1200px;
+    width: 97%;
+    /* max-width: 1200px; */
 }
 
 .dashboard-table td,
@@ -65,7 +65,7 @@ body {
 .dashboard-table th {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
+    /* text-align: left; */
     background-color: #407e1a;
     color: white;
 }
@@ -285,6 +285,7 @@ body {
     width: 70%;
     display: block;
 }
+
 /* ====================== Responsive Design ========================== */
 
 @media (max-width: 991px) {

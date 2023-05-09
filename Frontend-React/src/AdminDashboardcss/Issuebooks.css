@@ -417,7 +417,7 @@ textarea {
 
 button {
     display: inline-block;
-    background-color: #4CAF50;
+    background-color: #378109;
     color: #f3efef;
     padding: 0.5rem;
     border: none;
@@ -428,14 +428,14 @@ button {
 }
 
 button:hover {
-    background-color: #3e8e41;
+    background-color: #2d6d05;
 }
 
 
 /* Make the buttons responsive */
 
 button {
-    font-size: 1.25rem;
+    /* font-size: 1.25rem; */
     padding: 0.5rem 1rem;
     margin: 0.5rem;
 }

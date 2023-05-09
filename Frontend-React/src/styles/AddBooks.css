@@ -36,7 +36,7 @@
 .ManageBook-body label {
     display: block;
     margin: 0.5rem 0;
-    font-weight: bold;
+    font-weight: inherit;
 }
 
 .ManageBook-body input,
@@ -51,7 +51,7 @@ textarea {
 
 .ManageBook-body button {
     display: inline-block;
-    background-color: #4CAF50;
+    background-color: #378109;
     color: #f3efef;
     padding: 0.5rem;
     border: none;
@@ -62,14 +62,15 @@ textarea {
 }
 
 .ManageBook-body button:hover {
-    background-color: #3e8e41;
+    background-color: #2d6d05;
 }
 
 
 /* Make the buttons responsive */
 
 .ManageBook-body button {
-    font-size: 1.25rem;
+    font-size: larger;
     padding: 0.5rem 1rem;
     margin: 0.5rem;
+    width: auto;
 }

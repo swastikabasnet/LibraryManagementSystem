@@ -37,7 +37,7 @@ function MyAccount() {
     return (
         <div class="main">
             <div class="form">
-                <h2>My Account</h2>
+                <h1>My Account</h1>
                 <form>
                     <div class="mb-3">
                         <div class="col-md-6">

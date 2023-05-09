@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Reem Kufi", sans-serif !important;
+  /* font-family: "Reem Kufi", sans-serif !important; */
 }
 
 img {
@@ -23,7 +23,7 @@ body {
 }
 
 body {
-  background-color: #f6f6f6;
+  background-color: #ffffff;
 }
 
 nav {
@@ -508,4 +508,14 @@ nav {
   .about-background-image-container {
     display: none;
   }
+}
+
+/* user dashboard button */
+.Request button {
+  width: 90%;
+  font-size: small;
+}
+
+.title_title {
+  font-size: larger;
 }

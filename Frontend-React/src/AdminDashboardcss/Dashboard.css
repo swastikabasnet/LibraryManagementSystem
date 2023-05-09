@@ -340,6 +340,11 @@
     color: var(--white);
 }
 
+/*button width */
+.editOrDelete button {
+    width: 90%;
+    font-size: small;
+}
 
 /* ====================== Responsive Design ========================== */
 
