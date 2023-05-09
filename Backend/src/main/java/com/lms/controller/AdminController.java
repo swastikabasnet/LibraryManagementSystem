@@ -25,14 +25,29 @@ public class AdminController {
         return adminService.addAdmin(admin);
     }
 
+    @GetMapping("/admin/{id}")
+    public Admin getAdminById(@PathVariable long id){
+        return adminService.findById(id);
+    }
+
     @DeleteMapping("/admin/{id}")
     public void deleteAdmin(@PathVariable long id) {
         adminService.deleteAdmin(id);
+    }
+
+    @PutMapping("/admin/{id}")
+    public Admin updateAdmin(@RequestBody Admin admin, @PathVariable long id){
+        Admin updateAdmin = adminService.findById(id);
+
+        updateAdmin.setName(admin.getName());
+        updateAdmin.setEmail(admin.getEmail());
+        updateAdmin.setPhoneNumber(admin.getPhoneNumber());
+        updateAdmin.setPassword(admin.getPassword());
+        return adminService.updateAdmin(updateAdmin);
     }
 
     @PostMapping("/adminLogin")
     public @ResponseBody Admin login(@RequestBody LoginRequest loginRequest) {
         return adminService.login(loginRequest);
     }
-
 }

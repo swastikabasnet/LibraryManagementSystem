@@ -119,6 +119,9 @@
     object-fit: contain;
 }
 
+.generatepdf {
+    float: right;
+}
 
 /* ================== Order Details List ============== */
 

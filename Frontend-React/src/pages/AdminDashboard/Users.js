@@ -3,6 +3,8 @@ import { menuOutline } from "ionicons/icons";
 import logo from '../../styles/images/admin.png';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import "../../AdminDashboardcss/User.css"
+import { toast } from 'react-hot-toast';
 
 function Users() {
 
@@ -18,6 +20,16 @@ function Users() {
                 console.log(error);
             });
     }, []);
+
+    const generatePdf = () => {
+        const newWindow = window.open('http://localhost:8080/pdf/users', '_blank');
+        if (newWindow) {
+            toast.success('Generating PDF');
+        } else {
+            toast.error('Failed generating PDF');
+        }
+    }
+
     return (
         <div class="main">
             <div class="topbar">
@@ -29,6 +41,7 @@ function Users() {
                 </div>
             </div>
             <div id="dashboard-container">
+
                 <table class="dashboard-table" id="book-list">
                     <thead>
                         <tr>
@@ -50,8 +63,8 @@ function Users() {
                             </tr>))}
                     </tbody>
                 </table>
-
             </div>
+            <button class="generatepdf" onClick={generatePdf}>Generate PDF</button>
         </div>
     );
 }

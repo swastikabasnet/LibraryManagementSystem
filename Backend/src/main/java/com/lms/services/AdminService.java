@@ -28,6 +28,10 @@ public class AdminService {
         return admin;
     }
 
+    public Admin findById(long id){
+        return adminRepository.findById(id).orElseThrow(()-> new UserNotFoundException(id));
+    }
+
     public Admin addAdmin(Admin admin) {
         Admin getAdmin = adminRepository.findByEmail((admin.getEmail()));
         if (getAdmin==null){
@@ -43,6 +47,10 @@ public class AdminService {
         } else {
             throw new UserNotFoundException(id);
         }
+    }
+
+    public Admin updateAdmin(Admin admin){
+       return adminRepository.save(admin);
     }
 
     public Admin login(LoginRequest loginRequest){

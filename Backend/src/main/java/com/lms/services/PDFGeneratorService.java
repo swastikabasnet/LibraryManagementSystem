@@ -1,5 +1,6 @@
 package com.lms.services;
 
+import com.lms.model.Book;
 import com.lms.model.User;
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.CMYKColor;
@@ -12,6 +13,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class PDFGeneratorService {
+
+    // generating users pdf
 
     private List<User> userList;
 
@@ -33,10 +36,10 @@ public class PDFGeneratorService {
         // Creating font
         // Setting font style and size
         Font fontTiltle = FontFactory.getFont(FontFactory.TIMES_ROMAN);
-        fontTiltle.setSize(20);
+        fontTiltle.setSize(24);
 
         // Creating paragraph
-        Paragraph paragraph = new Paragraph("List Of Users", fontTiltle);
+        Paragraph paragraph = new Paragraph("List of Users", fontTiltle);
 
         // Aligning the paragraph in document
         paragraph.setAlignment(Paragraph.ALIGN_CENTER);
@@ -100,5 +103,75 @@ public class PDFGeneratorService {
         // Closing the document
         document.close();
 
+    }
+
+    // generating book pdf
+
+    private List<Book> bookList;
+
+    public void setBookList(List<Book> bookList) {
+        this.bookList = bookList;
+    }
+
+    public void generateBooksPDF(HttpServletResponse response) throws DocumentException, IOException {
+
+        Document document = new Document(PageSize.A4);
+
+        PdfWriter.getInstance(document, response.getOutputStream());
+
+        document.open();
+
+        Font fontTiltle = FontFactory.getFont(FontFactory.TIMES_ROMAN);
+        fontTiltle.setSize(24);
+
+        Paragraph paragraph = new Paragraph("List of Books", fontTiltle);
+
+        paragraph.setAlignment(Paragraph.ALIGN_CENTER);
+
+        document.add(paragraph);
+
+        PdfPTable table = new PdfPTable(5);
+
+        table.setWidthPercentage(100f);
+        table.setWidths(new int[] { 1, 2, 2, 4, 2 });
+        table.setSpacingBefore(5);
+
+        PdfPCell cell = new PdfPCell();
+
+        float c = 0.783f; // Cyan value
+        float m = 0.0f;   // Magenta value
+        float y = 0.886f; // Yellow value
+        float k = 0.545f; // Black value
+        cell.setBackgroundColor(new CMYKColor(c,m,y,k));
+        cell.setPadding(5);
+
+        Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN);
+        font.setColor(CMYKColor.WHITE);
+
+        cell.setPhrase(new Phrase("ID", font));
+        table.addCell(cell);
+        cell.setPhrase(new Phrase("Book Title", font));
+        table.addCell(cell);
+        cell.setPhrase(new Phrase("Author", font));
+        table.addCell(cell);
+        cell.setPhrase(new Phrase("Description", font));
+        table.addCell(cell);
+        cell.setPhrase(new Phrase("Published Date", font));
+        table.addCell(cell);
+
+        for (Book book : bookList) {
+            // Adding user id
+            table.addCell(String.valueOf(book.getId()));
+            // Adding user name
+            table.addCell(book.getBookTitle());
+            // Adding user email
+            table.addCell(book.getAuthor());
+            // Adding user contact
+            table.addCell(book.getDescription());
+            // Adding user joined date
+            table.addCell(String.valueOf(book.getRegisteredDate()));
+        }
+        document.add(table);
+        document.close();
     }
 }

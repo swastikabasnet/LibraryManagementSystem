@@ -342,8 +342,11 @@
 
 /*button width */
 .editOrDelete button {
-    width: 90%;
+    width: 70%;
     font-size: small;
+    max-width: 90px;
+    margin: 1.5px;
+    padding-inline: 15px;
 }
 
 /* ====================== Responsive Design ========================== */

@@ -5,8 +5,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import '../../AdminDashboardcss/Dashboard.css'
+import { toast } from 'react-hot-toast';
 
 function AdminDashboard() {
+    const adminId = sessionStorage.getItem('adminId');
 
     const [books, setBooks] = useState([]);
     const [editID, setEditID] = useState(-1);
@@ -76,6 +78,16 @@ function AdminDashboard() {
             }).catch(err => console.log(err));
     }
 
+
+    //generate book pdf
+    const generatePdf = () => {
+        const newWindow = window.open('http://localhost:8080/pdf/books', '_blank');
+        if (newWindow) {
+            toast.success('Generating PDF');
+        } else {
+            toast.error('Failed generating PDF');
+        }
+    }
 
     return (
         <div class="main">
@@ -178,6 +190,7 @@ function AdminDashboard() {
 
                 </table>
             </div>
+            <button class="generatepdf" onClick={generatePdf}>Generate PDF</button>
         </div>
     );
 }

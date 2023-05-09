@@ -21,6 +21,8 @@ function AdminLogin() {
         const requestBody = { email: email, password: password };
         try {
             const response = await axios.post("http://localhost:8080/adminLogin", requestBody);
+            const admin = response.data;
+            sessionStorage.setItem("adminId", admin.id);
             navigate("/adminDashboard", { state: response?.data });
             toast.success("Successfully logged in");
         } catch (error) {
