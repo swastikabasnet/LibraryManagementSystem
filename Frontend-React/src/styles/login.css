@@ -6,6 +6,7 @@ form {
 	flex-direction: column;
 	gap: 0.3rem;
 }
+
 .login-Body {
 	/*background:-webkit-linear-gradient(left, #fafcf9, #e6ebe7);*/
 	background-image: url("./images/Background.jpg");
@@ -75,7 +76,13 @@ form {
 
 .check {
 	display: flex;
+	align-items: center;
+	font-size: small;
+}
 
+
+.check input[type="checkbox"] {
+	margin: 0 10px 0 0;
 }
 
 .forgot {
@@ -147,9 +154,11 @@ a {
 	padding: 8px 15px;
 	/* margin: 8px 0; */
 }
+
 .login-Body input:not(:is(input[type=checkbox])) {
 	width: 100%;
 }
+
 .login-Body input:focus {
 	outline: none;
 }

@@ -28,7 +28,7 @@ function Dashboard() {
                 toast.success("Book requested");
             })
             .catch(error => {
-                toast.error("Failed, max 2 request");
+                toast.error("Failed, max 2 request")
                 console.log(error);
             });
     };

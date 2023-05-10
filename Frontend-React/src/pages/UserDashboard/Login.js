@@ -160,7 +160,6 @@ function Login() {
                 setRegPassword(e.target.value);
               }}
             />
-
             <PasswordInput
               placeholder="Confirm password"
               required
@@ -181,29 +180,27 @@ function Login() {
         <div class="form-container sign-in-container">
           <form action="#">
             <h1>Sign in</h1>
-            <label style={{ width: "100%" }}>
-              <input
-                type="email"
-                placeholder="Email"
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                required
-                value={logEmail}
-                onChange={(e) => {
-                  setlogEmail(e.target.value);
-                }}
-              />
-            </label>
-            <label style={{ width: "100%" }}>
-              <PasswordInput
-                type="password"
-                placeholder="Password"
-                value={logPassword}
-                onChange={(e) => {
-                  setLogPassword(e.target.value);
-                }}
-                required
-              />
-            </label>
+            <input
+              type="email"
+              placeholder="Email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              required
+              value={logEmail}
+              onChange={(e) => {
+                setlogEmail(e.target.value);
+              }}
+            />
+
+            <PasswordInput
+              type="password"
+              placeholder="Password"
+              value={logPassword}
+              onChange={(e) => {
+                setLogPassword(e.target.value);
+              }}
+              required
+            />
+
             <div class="forgot" style={{ margin: "10px" }}>
               <Link to="/forgotpassword" style={{ color: "blue" }}>
                 Forgot password?
@@ -214,10 +211,7 @@ function Login() {
                 type="checkbox"
                 checked={rememberMe}
                 name="remember"
-                onChange={handleRememberMeChange} />
-              <div style={{ margin: "15px", fontSize: "14px" }}>
-                Remember Me
-              </div>
+                onChange={handleRememberMeChange} />Remember Me
             </div>
             <button style={{ margin: "10px" }} type="button" onClick={login}>
               Sign In
