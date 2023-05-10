@@ -218,11 +218,16 @@ function Login() {
               </Link>
             </div>
             <div class="check">
-              <input
-                type="checkbox"
-                checked={rememberMe}
-                name="remember"
-                onChange={handleRememberMeChange} />Remember Me
+              <div>
+                <input
+                  type="checkbox"
+                  checked={rememberMe}
+                  name="remember"
+                  onChange={handleRememberMeChange} />
+              </div>
+              <div>
+                Remember Me
+              </div>
             </div>
             <button style={{ margin: "10px" }} type="button" onClick={login}>
               Sign In
