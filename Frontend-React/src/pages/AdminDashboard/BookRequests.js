@@ -3,8 +3,9 @@ import { menuOutline } from "ionicons/icons";
 import logo from '../../styles/images/admin.png';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
-function BorrowedBooks() {
+function BookRequests() {
     const [borrow, setBorrow] = useState([]);
     const [userNames, setUserNames] = useState({});
     const [bookTitle, setBookTitle] = useState({});
@@ -66,14 +67,20 @@ function BorrowedBooks() {
     const handleAccept = (borrwID) => {
         axios.put('http://localhost:8080/borrow/accept', { borrowId: borrwID })
             .then(res => {
-                window.location.reload(false);
+                toast.success("Request accepted");
+                setTimeout(() => {
+                    window.location.reload(false);
+                }, 500);
             }).catch(err => console.log(err));
     }
 
     const handleReject = (borrwID) => {
         axios.put('http://localhost:8080/borrow/reject', { borrowId: borrwID })
             .then(res => {
-                window.location.reload(false);
+                toast.error("Request rejected");
+                setTimeout(() => {
+                    window.location.reload(false);
+                }, 500);
             }).catch(err => console.log(err));
     }
 
@@ -99,10 +106,11 @@ function BorrowedBooks() {
                             <th>Book Id</th>
                             <th>Book Title</th>
                             <th>User Id</th>
-                            <th>Borrowed user</th>
+                            <th>Username</th>
                             <th>Borrow Date</th>
                             <th>Due Date</th>
                             <th>Return Date</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -116,6 +124,17 @@ function BorrowedBooks() {
                                 <td>{br.borrowDate}</td>
                                 <td>{br.dueDate}</td>
                                 <td>{br.returnDate}</td>
+                                <td class="editOrDelete">
+                                    {br.status === 'PENDING' ? (
+                                        <>
+                                            <button onClick={() => handleAccept(br.borrowId)}>Accept</button>
+                                            <button onClick={() => handleReject(br.borrowId)}>Reject</button>
+                                        </>
+                                    ) : (
+                                        br.status
+                                    )}
+                                </td>
+
                             </tr>))}
                     </tbody>
                 </table>
@@ -123,4 +142,4 @@ function BorrowedBooks() {
         </div>
     );
 }
-export default BorrowedBooks;
+export default BookRequests;

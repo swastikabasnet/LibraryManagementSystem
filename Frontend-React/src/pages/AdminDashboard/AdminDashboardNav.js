@@ -38,7 +38,7 @@ function AdminDashboardNav() {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/admindashboard/borrowedbooks">
+                        <Link to="/admindashboard/bookrequests">
                             <span class="icon"><IonIcon icon={notificationsOutline}></IonIcon></span>
                             <span class="title">Book Requests</span>
                         </Link>

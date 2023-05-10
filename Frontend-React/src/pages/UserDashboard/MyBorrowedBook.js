@@ -3,6 +3,7 @@ import "../../styles/BorrowedBooks.css";
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { toast } from "react-hot-toast";
 // import '../../UserDashboardcss/BookRequest.css';
 
 function MyBorrowedBook() {
@@ -34,20 +35,22 @@ function MyBorrowedBook() {
 
     }, [userId]);
 
-    const getBook = (id) => {
-        return axios.get('http://localhost:8080/books/' + id)
-            .then(response => {
-                return { id, title: response.data.bookTitle };
-            })
-            .catch(error => {
-                console.log(error);
-            });
+    const getBook = async (id) => {
+        try {
+            const response = await axios.get('http://localhost:8080/books/' + id);
+            return { id, title: response.data.bookTitle };
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     const handleReturn = (borrwID, bookID, userID) => {
         axios.put('http://localhost:8080/borrow/return', { borrowId: borrwID, bookId: bookID, userId: userID })
             .then(res => {
-                window.location.reload(false);
+                toast.success("Book returned");
+                setTimeout(() => {
+                    window.location.reload(false);
+                }, 500);
             }).catch(err => console.log(err));
     }
 
