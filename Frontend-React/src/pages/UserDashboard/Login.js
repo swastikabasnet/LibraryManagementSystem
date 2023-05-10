@@ -54,25 +54,36 @@ function Login() {
     }
   };
 
-  // Sign up
   const register = async (event) => {
     if (regPassword !== confirmPassword) {
-      alert("Passwords do not match");
+      toast.error("Password do not match");
       return;
     }
+
+    // Check if any of the input values are empty
+    if (!name || !phoneNumber || !regEmail || !regPassword || !confirmPassword) {
+      toast.error("Fill all the fields");
+      return;
+    }
+
     var requestBody = {
       name: name,
       phoneNumber: phoneNumber,
       email: regEmail,
       password: regPassword,
     };
-    await axios
-      .post("http://localhost:8080/register", requestBody)
-      .then((response) => {
-        navigate("/login", { state: response.data });
-        toast.success("Successfully Signed in");
-      }).catch(() => toast.error("Failed to Signup"));
+    try {
+      const response = await axios.post("http://localhost:8080/register", requestBody);
+      setTimeout(() => {
+        toast.success("Successfully Signed up");
+        navigate("/login", { state: response.data })
+      }, 500);
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to Signup");
+    }
   };
+
 
   // remember me 
   const handleRememberMeChange = (event) => {
@@ -117,7 +128,7 @@ function Login() {
             />
 
             <input
-              type="phone number"
+              type="tel"
               placeholder="Phone number"
               pattern="[0-9]{10}"
               required
