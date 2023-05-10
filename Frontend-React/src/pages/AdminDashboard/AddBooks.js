@@ -67,44 +67,17 @@ function AddBooks() {
                 toast.error("Failed to add book");
             });
     }
-
-
-    // // edit
-    // const updateBook = async (updatedBookData) => {
-    //     await axios.put(`http://localhost:8080/books/${bookId}`, updatedBookData);
-    //     navigate("/admindashboard/AddBooks");
-    // }
-
-
-    // // delete
-    // const [bookId, setBookId] = useState('');
-    // const [bookQuantity, setBookQuantity] = useState('');
-
-    // const deleteBook = async (event) => {
-    //     await axios.delete(`http://localhost:8080/books/${bookId}`).then(response => {
-    //         navigate("/admindashboard/AddBooks", { state: response.data })
-    //     })
-    // }
-
     return (
         <div class="ManageBook-body">
             <div class="main">
                 <div class="topbar">
                     <div class="toggle">
-                        <span class="icon"><IonIcon icon={menuOutline}></IonIcon></span>
                     </div>
                     <div class="user">
                         <img class="navLogo" src={logo} alt="logo" />
                     </div>
                 </div>
                 <div>
-                    {/* <div class="options">
-                        <h1>Manage Books</h1>
-                        <button id="addBtn" onClick={showAddForm}>Add</button>
-                        <button id="editBtn" onClick={showEditForm}>Edit</button>
-                        <button id="deleteBtn" onClick={showdeleteForm}>Delete</button>
-                    </div> */}
-
                     <div id="addForm">
                         <h1>Add Book</h1>
                         <form>

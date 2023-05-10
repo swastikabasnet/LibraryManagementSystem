@@ -91,14 +91,13 @@ function BookRequests() {
         <div class="main">
             <div class="topbar">
                 <div class="toggle">
-                    <span class="icon"><IonIcon icon={menuOutline}></IonIcon></span>
                 </div>
                 <div class="user">
                     <img class="navLogo" src={logo} alt="logo" />
                 </div>
             </div>
 
-            <div id="dashboard-container">
+            <div id="dashboard-container" style={{marginTop: "2rem"}}>
                 <table class="dashboard-table" id="book-list">
                     <thead>
                         <tr>

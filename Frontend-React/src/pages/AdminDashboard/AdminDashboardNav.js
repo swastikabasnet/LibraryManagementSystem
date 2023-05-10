@@ -1,13 +1,15 @@
 import { Link, Outlet } from 'react-router-dom';
 import logo from '../../styles/images/logo.png';
 import { IonIcon } from '@ionic/react';
-import { homeOutline, personOutline, notificationsOutline, logOutOutline, bookOutline, arrowRedoOutline, settingsOutline } from "ionicons/icons"
+import { homeOutline, personOutline, notificationsOutline, logOutOutline, bookmarkOutline, chatbubbleOutline, bookOutline, arrowRedoOutline, settingsOutline } from "ionicons/icons"
 import { useLocation } from 'react-router-dom';
 import '../../AdminDashboardcss/Dashboard.css'
+
 
 function AdminDashboardNav() {
     const location = useLocation();
     console.log(location.state);
+
     return (
         <div class="container" id="container">
             <div class="navigation">
@@ -51,7 +53,7 @@ function AdminDashboardNav() {
                     </li>
                     <li>
                         <Link to="/admindashboard/bookissuehistory">
-                            <span class="icon"><IonIcon icon={arrowRedoOutline}></IonIcon></span>
+                            <span class="icon"><IonIcon icon={bookmarkOutline}></IonIcon></span>
                             <span class="title">Book Issue History</span>
                         </Link>
                     </li>
@@ -62,7 +64,7 @@ function AdminDashboardNav() {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/admin">
+                        <Link to="/admindashboard/logout">
                             <span class="icon"><IonIcon icon={logOutOutline}></IonIcon></span>
                             <span class="title">Log Out</span>
                         </Link>

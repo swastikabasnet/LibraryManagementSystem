@@ -18,6 +18,9 @@ import BookIssueHistory from './pages/AdminDashboard/bookuserhistory'
 import Setting from './pages/AdminDashboard/Setting';
 import AddAdmin from './pages/AdminDashboard/addadmin';
 import Users from './pages/AdminDashboard/Users';
+import LogOut from './pages/AdminDashboard/logout';
+import UserLogOut from './pages/UserDashboard/userlogout';
+
 import VerifyOtp from './pages/VerifyOtp';
 import ResetPasswordOTP from './pages/ResetPasswordOTP';
 import BookRequests from './pages/AdminDashboard/BookRequests';
@@ -34,6 +37,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/dashboard/myaccount" element={<MyAccount />} />
             <Route path="/dashboard/myborrowedbooks" element={<MyBorrowedBook />} />
+            <Route path="/dashboard/userlogout" element={<UserLogOut />} />
           </Route>
 
           <Route path="/admindashboard" element={<AdminDashboardNav />} >
@@ -44,7 +48,7 @@ function App() {
             <Route path='/admindashboard/issuebooks' element={<IssueBooks />} />
             <Route path='/admindashboard/bookissuehistory' element={<BookIssueHistory />} />
             <Route path='/admindashboard/addadmin' element={<AddAdmin />} />
-
+            <Route path='/admindashboard/logout' element={<LogOut />} />
             <Route path='/admindashboard/setting' element={<Setting />} />
           </Route>
 

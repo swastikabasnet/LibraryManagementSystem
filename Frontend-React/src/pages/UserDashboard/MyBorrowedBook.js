@@ -1,10 +1,11 @@
 
 import "../../styles/BorrowedBooks.css";
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from "react-hot-toast";
-// import '../../UserDashboardcss/BookRequest.css';
+import logo from '../../styles/images/user.png';
+
+
 
 function MyBorrowedBook() {
     const [bookTitle, setBookTitle] = useState({});
@@ -56,7 +57,15 @@ function MyBorrowedBook() {
 
     return (
         <div class="main">
-            <div id="dashboard-container">
+            <div class="topbar">
+            
+                <div class="toggle">
+                </div>
+                <div class="user">
+                    <img class="navLogo" src={logo} alt="logo" />
+                </div>
+            </div>
+            <div id="dashboard-container" style={{marginTop: "2rem"}}>
                 <table class="dashboard-table" id="book-list">
                     <thead>
                         <tr>

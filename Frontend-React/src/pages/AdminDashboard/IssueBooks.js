@@ -30,7 +30,6 @@ function IssuedBooks() {
             <div class="main">
                 <div class="topbar">
                     <div class="toggle">
-                        <span class="icon"><IonIcon icon={menuOutline}></IonIcon></span>
                     </div>
                     <div class="user">
                         <img class="navLogo" src={logo} alt="logo" />

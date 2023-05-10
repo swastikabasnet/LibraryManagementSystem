@@ -150,7 +150,6 @@ function MyAccount() {
         <div class="main">
             <div class="topbar">
                 <div class="toggle">
-                    <IonIcon icon={menuOutline}></IonIcon>
                 </div>
                 <div class="user">
                     <img class="navLogo" src={logo} alt="logo" />

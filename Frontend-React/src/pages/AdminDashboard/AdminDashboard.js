@@ -118,15 +118,10 @@ function AdminDashboard() {
     return (
         <div class="main">
             <div class="topbar">
+                <h3 style={{margin:'4px', padding: '4px'}}>Hello, Admin</h3>
                 <div class="toggle">
-                    <IonIcon icon={menuOutline}></IonIcon>
+                    
                 </div>
-                {/* <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search book" />
-                        <IonIcon icon={searchOutline}></IonIcon>
-                    </label>
-                </div> */}
                 <div class="user">
                     <img class="navLogo" src={logo} alt="logo" />
                 </div>

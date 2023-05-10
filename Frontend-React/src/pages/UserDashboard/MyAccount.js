@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 // import "../../styles/MyAccount.css";
 import "../../UserDashboardcss/MyAccount.css"
 import axios from "axios";
+import logo from '../../styles/images/user.png';
 
 function MyAccount() {
     const [name, setName] = useState("");
@@ -36,6 +37,14 @@ function MyAccount() {
 
     return (
         <div class="main">
+            <div class="topbar">
+            
+                <div class="toggle">
+                </div>
+                <div class="user">
+                    <img class="navLogo" src={logo} alt="logo" />
+                </div>
+            </div>
             <div class="form">
                 <h1>My Account</h1>
                 <form>

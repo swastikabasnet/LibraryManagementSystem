@@ -54,36 +54,25 @@ function Login() {
     }
   };
 
+  // Sign up
   const register = async (event) => {
     if (regPassword !== confirmPassword) {
-      toast.error("Password do not match");
+      alert("Passwords do not match");
       return;
     }
-
-    // Check if any of the input values are empty
-    if (!name || !phoneNumber || !regEmail || !regPassword || !confirmPassword) {
-      toast.error("Fill all the fields");
-      return;
-    }
-
     var requestBody = {
       name: name,
       phoneNumber: phoneNumber,
       email: regEmail,
       password: regPassword,
     };
-    try {
-      const response = await axios.post("http://localhost:8080/register", requestBody);
-      setTimeout(() => {
-        toast.success("Successfully Signed up");
-        navigate("/login", { state: response.data })
-      }, 500);
-    } catch (error) {
-      console.error(error);
-      toast.error("Failed to Signup");
-    }
+    await axios
+      .post("http://localhost:8080/register", requestBody)
+      .then((response) => {
+        navigate("/login", { state: response.data });
+        toast.success("Successfully Signed in");
+      }).catch(() => toast.error("Failed to Signup"));
   };
-
 
   // remember me 
   const handleRememberMeChange = (event) => {
@@ -128,7 +117,7 @@ function Login() {
             />
 
             <input
-              type="tel"
+              type="phone number"
               placeholder="Phone number"
               pattern="[0-9]{10}"
               required
@@ -171,6 +160,7 @@ function Login() {
                 setRegPassword(e.target.value);
               }}
             />
+
             <PasswordInput
               placeholder="Confirm password"
               required
@@ -191,27 +181,29 @@ function Login() {
         <div class="form-container sign-in-container">
           <form action="#">
             <h1>Sign in</h1>
-            <input
-              type="email"
-              placeholder="Email"
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-              required
-              value={logEmail}
-              onChange={(e) => {
-                setlogEmail(e.target.value);
-              }}
-            />
-
-            <PasswordInput
-              type="password"
-              placeholder="Password"
-              value={logPassword}
-              onChange={(e) => {
-                setLogPassword(e.target.value);
-              }}
-              required
-            />
-
+            <label style={{ width: "100%" }}>
+              <input
+                type="email"
+                placeholder="Email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                required
+                value={logEmail}
+                onChange={(e) => {
+                  setlogEmail(e.target.value);
+                }}
+              />
+            </label>
+            <label style={{ width: "100%" }}>
+              <PasswordInput
+                type="password"
+                placeholder="Password"
+                value={logPassword}
+                onChange={(e) => {
+                  setLogPassword(e.target.value);
+                }}
+                required
+              />
+            </label>
             <div class="forgot" style={{ margin: "10px" }}>
               <Link to="/forgotpassword" style={{ color: "blue" }}>
                 Forgot password?

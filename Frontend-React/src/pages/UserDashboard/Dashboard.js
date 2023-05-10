@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import logo from '../../styles/images/user.png';
 import { toast } from 'react-hot-toast';
 // import "../../UserDashboardcss/UserDashboard.css"
 
@@ -28,7 +29,7 @@ function Dashboard() {
                 toast.success("Book requested");
             })
             .catch(error => {
-                toast.error("Failed, max 2 request")
+                toast.error("Failed, max 2 request");
                 console.log(error);
             });
     };
@@ -36,7 +37,15 @@ function Dashboard() {
 
     return (
         <div class="main">
-            <div id="dashboard-container">
+            <div class="topbar">
+                <h3 style={{margin:'4px', padding: '4px'}}>Hello, User</h3>
+                <div class="toggle">
+                </div>
+                <div class="user">
+                    <img class="navLogo" src={logo} alt="logo" />
+                </div>
+            </div>
+            <div id="dashboard-container" style={{marginTop: "2rem"}}>
                 <table class="dashboard-table" id="book-list">
                     <thead>
                         <tr>

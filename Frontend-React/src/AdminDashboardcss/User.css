@@ -121,6 +121,7 @@
 
 .generatepdf {
     float: right;
+    margin-right: 1.5rem;
 }
 
 /* ================== Order Details List ============== */
