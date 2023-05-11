@@ -23,6 +23,11 @@ public class UserController {
     @Autowired
     private EmailOtpService emailOtpService;
 
+    @GetMapping("/")
+    public String welcome(){
+        return "This is Java Backend ;)";
+    }
+
     @GetMapping("/users")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
