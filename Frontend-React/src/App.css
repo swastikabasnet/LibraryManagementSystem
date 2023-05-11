@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Reem Kufi", sans-serif !important;
+  font-family: sans-serif !important;
 }
 
 img {
@@ -366,8 +366,8 @@ nav {
 
 /* user dashboard request button */
 .request-button {
-  font-size: larger;
-  padding: 0.2rem 1rem;
+  font-size: medium;
+  padding: 0.3rem 0.7rem;
   margin: 0.5rem;
   width: auto;
 }

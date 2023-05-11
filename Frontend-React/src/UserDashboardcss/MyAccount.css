@@ -27,3 +27,10 @@ ul {
 li {
     margin-bottom: 10px;
 }
+
+.save-button {
+    font-size: larger;
+    padding: 0.3rem 1rem;
+    margin: 0.5rem;
+    width: auto;
+}

@@ -38,7 +38,7 @@ function MyAccount() {
     return (
         <div class="main">
             <div class="topbar">
-            
+
                 <div class="toggle">
                 </div>
                 <div class="user">
@@ -67,7 +67,7 @@ function MyAccount() {
                                 onChange={(e) => (setPhoneNumber(e.target.value))} />
                         </div>
                     </div>
-                    <button class="btn btn-primary" type="button" onClick={updateProfile}>Save changes</button>
+                    <button class="save-button" type="button" onClick={updateProfile}>Save changes</button>
                 </form>
             </div>
         </div>
