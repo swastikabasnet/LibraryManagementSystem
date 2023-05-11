@@ -71,7 +71,7 @@ function Dashboard() {
             })
     }, []);
 
-    console.log(averageRatings);
+    // console.log(averageRatings);
 
 
     return (
