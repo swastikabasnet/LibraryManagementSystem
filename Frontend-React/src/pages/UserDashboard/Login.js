@@ -54,25 +54,47 @@ function Login() {
     }
   };
 
-  // Sign up
+  // sign up
   const register = async (event) => {
-    if (regPassword !== confirmPassword) {
-      alert("Passwords do not match");
+
+    // Check if any of the input values are empty
+    if (!name || !phoneNumber || !regEmail || !regPassword || !confirmPassword) {
+      toast.error("Fill all the fields");
       return;
     }
+
+    // Validate password using regex pattern
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    if (!passwordRegex.test(regPassword)) {
+      toast.error("Password must contain at least one digit, one lowercase letter, one uppercase letter, and be at least 8 characters long");
+      return;
+    }
+
+    if (regPassword !== confirmPassword) {
+      toast.error("Password do not match");
+      return;
+    }
+
     var requestBody = {
       name: name,
       phoneNumber: phoneNumber,
       email: regEmail,
       password: regPassword,
     };
-    await axios
-      .post("http://localhost:8080/register", requestBody)
-      .then((response) => {
-        navigate("/login", { state: response.data });
-        toast.success("Successfully Signed in");
-      }).catch(() => toast.error("Failed to Signup"));
+    try {
+      const response = await axios.post("http://localhost:8080/register", requestBody);
+      toast.success("Successfully Signed up");
+      setName("");
+      setPhoneNumber("");
+      setRegEmail("");
+      setRegPassword("");
+      setConfirmPassword("");
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to Signup");
+    }
   };
+
 
   // remember me 
   const handleRememberMeChange = (event) => {
@@ -114,10 +136,11 @@ function Login() {
               }
               onInput={(e) => e.target.setCustomValidity("")}
               onChange={(e) => setName(e.target.value)}
+              value={name}
             />
 
             <input
-              type="phone number"
+              type="tel"
               placeholder="Phone number"
               pattern="[0-9]{10}"
               required
@@ -130,6 +153,7 @@ function Login() {
               onChange={(e) => {
                 setPhoneNumber(e.target.value);
               }}
+              value={phoneNumber}
             />
 
             <input
@@ -144,33 +168,38 @@ function Login() {
               onChange={(e) => {
                 setRegEmail(e.target.value);
               }}
+              value={regEmail}
             />
 
             <PasswordInput
               placeholder="Password"
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
               required
-              onInvalid={(e) =>
+              onInvalid={(e) => {
                 e.target.setCustomValidity(
                   "Password must contain at least one digit, one lowercase letter, one uppercase letter, and be at least 8 characters long"
-                )
-              }
+                );
+                e.preventDefault();
+              }}
               onInput={(e) => e.target.setCustomValidity("")}
               onChange={(e) => {
                 setRegPassword(e.target.value);
               }}
+              value={regPassword}
             />
-
             <PasswordInput
               placeholder="Confirm password"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
               required
-              onInvalid={(e) =>
-                e.target.setCustomValidity("Please re-enter your password")
-              }
+              onInvalid={(e) => {
+                e.target.setCustomValidity("Please re-enter your password");
+                e.preventDefault();
+              }}
               onInput={(e) => e.target.setCustomValidity("")}
               onChange={(e) => {
                 setConfirmPassword(e.target.value);
               }}
+              value={confirmPassword}
             />
             <button type="submit" onClick={register}>
               Sign Up
@@ -181,29 +210,27 @@ function Login() {
         <div class="form-container sign-in-container">
           <form action="#">
             <h1>Sign in</h1>
-            <label style={{ width: "100%" }}>
-              <input
-                type="email"
-                placeholder="Email"
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                required
-                value={logEmail}
-                onChange={(e) => {
-                  setlogEmail(e.target.value);
-                }}
-              />
-            </label>
-            <label style={{ width: "100%" }}>
-              <PasswordInput
-                type="password"
-                placeholder="Password"
-                value={logPassword}
-                onChange={(e) => {
-                  setLogPassword(e.target.value);
-                }}
-                required
-              />
-            </label>
+            <input
+              type="email"
+              placeholder="Email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              required
+              value={logEmail}
+              onChange={(e) => {
+                setlogEmail(e.target.value);
+              }}
+            />
+
+            <PasswordInput
+              type="password"
+              placeholder="Password"
+              value={logPassword}
+              onChange={(e) => {
+                setLogPassword(e.target.value);
+              }}
+              required
+            />
+
             <div class="forgot" style={{ margin: "10px" }}>
               <Link to="/forgotpassword" style={{ color: "blue" }}>
                 Forgot password?

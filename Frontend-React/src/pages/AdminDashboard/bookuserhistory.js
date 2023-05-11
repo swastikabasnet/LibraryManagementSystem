@@ -90,7 +90,7 @@ function BorrowedBooks() {
                 </div>
             </div>
 
-            <div id="dashboard-container" style={{marginTop: "2rem"}}>
+            <div id="dashboard-container" style={{ margin: "0rem 0rem 1rem 0rem" }}>
                 <table class="dashboard-table" id="book-list">
                     <thead>
                         <tr>
@@ -102,6 +102,7 @@ function BorrowedBooks() {
                             <th>Borrow Date</th>
                             <th>Due Date</th>
                             <th>Return Date</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -115,6 +116,7 @@ function BorrowedBooks() {
                                 <td>{br.borrowDate}</td>
                                 <td>{br.dueDate}</td>
                                 <td>{br.returnDate}</td>
+                                <td>{br.status}</td>
                             </tr>))}
                     </tbody>
                 </table>

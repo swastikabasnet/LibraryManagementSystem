@@ -97,7 +97,7 @@ function BookRequests() {
                 </div>
             </div>
 
-            <div id="dashboard-container" style={{marginTop: "2rem"}}>
+            <div id="dashboard-container" style={{ marginTop: "2rem" }}>
                 <table class="dashboard-table" id="book-list">
                     <thead>
                         <tr>
@@ -113,7 +113,7 @@ function BookRequests() {
                         </tr>
                     </thead>
                     <tbody>
-                        {borrow.map(br => (
+                        {borrow.filter(br => br.status === 'PENDING').map(br => (
                             <tr key={br.id}>
                                 <td>{br.borrowId}</td>
                                 <td>{br.book.id}</td>
@@ -124,18 +124,13 @@ function BookRequests() {
                                 <td>{br.dueDate}</td>
                                 <td>{br.returnDate}</td>
                                 <td class="editOrDelete">
-                                    {br.status === 'PENDING' ? (
-                                        <>
-                                            <button onClick={() => handleAccept(br.borrowId)}>Accept</button>
-                                            <button onClick={() => handleReject(br.borrowId)}>Reject</button>
-                                        </>
-                                    ) : (
-                                        br.status
-                                    )}
+                                    <button onClick={() => handleAccept(br.borrowId)}>Accept</button>
+                                    <button onClick={() => handleReject(br.borrowId)}>Reject</button>
                                 </td>
-
-                            </tr>))}
+                            </tr>
+                        ))}
                     </tbody>
+
                 </table>
             </div>
         </div>

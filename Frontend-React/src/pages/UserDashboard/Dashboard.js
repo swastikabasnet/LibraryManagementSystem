@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import logo from '../../styles/images/user.png';
 import { toast } from 'react-hot-toast';
+import { useResolvedPath } from 'react-router-dom';
 // import "../../UserDashboardcss/UserDashboard.css"
 
 function Dashboard() {
@@ -19,7 +20,15 @@ function Dashboard() {
             });
     }, []);
     const userId = sessionStorage.getItem('userId');
+    const [userName, setUserName] = useState("");
     console.log(userId);
+
+    useEffect(() => {
+        axios.get('http://localhost:8080/users/' + userId)
+            .then(response => {
+                setUserName(response.data.name);
+            })
+    })
 
     const handleBorrow = (id) => {
         axios.post('http://localhost:8080/borrow', { user: { id: userId }, book: { id: id } })
@@ -38,14 +47,14 @@ function Dashboard() {
     return (
         <div class="main">
             <div class="topbar">
-                <h3 style={{margin:'4px', padding: '4px'}}>Hello, User</h3>
+                <h3 style={{ margin: '4px', padding: '4px' }}>Hello, {userName}</h3>
                 <div class="toggle">
                 </div>
                 <div class="user">
                     <img class="navLogo" src={logo} alt="logo" />
                 </div>
             </div>
-            <div id="dashboard-container" style={{marginTop: "2rem"}}>
+            <div id="dashboard-container" style={{ marginTop: "2rem" }}>
                 <table class="dashboard-table" id="book-list">
                     <thead>
                         <tr>
@@ -66,7 +75,7 @@ function Dashboard() {
                                 <td>{book.availability}</td>
                                 <td>{book.description}</td>
                                 <td class="Request">
-                                    <button type='button' onClick={() => handleBorrow(book.id)} >Request</button>
+                                    <button class="request-button" type='button' onClick={() => handleBorrow(book.id)} >Request</button>
                                 </td>
                             </tr>
                         ))}

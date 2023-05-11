@@ -26,7 +26,7 @@ function MyAccount() {
     const [tab, setTab] = useState(TABS.admins);
 
     // admin update
-    const tabItemStyle = (tabItem) => ({ display: tabItem === tab ? "block" : "none", marginTop: "3rem", marginInline: "auto" })
+    const tabItemStyle = (tabItem) => ({ display: tabItem === tab ? "block" : "none", marginTop: "2rem", marginInline: "auto" })
 
     // get admin{id} data
     useEffect(() => {
@@ -155,7 +155,7 @@ function MyAccount() {
                     <img class="navLogo" src={logo} alt="logo" />
                 </div>
             </div>
-            <div>
+            <div style={{ marginTop: "20px" }}>
                 <div id="setting-nav" class="topbara">
                     <button onClick={() => setTab(TABS.admins)}>Admins</button>
                     <button onClick={() => {

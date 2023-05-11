@@ -23,7 +23,7 @@ body {
 }
 
 body {
-  background-color: #f6f6f6;
+  background-color: #ffffff;
 }
 
 nav {
@@ -361,6 +361,15 @@ nav {
   display: flex;
   align-items: center;
   font-weight: 600;
+}
+
+
+/* user dashboard request button */
+.request-button {
+  font-size: larger;
+  padding: 0.2rem 1rem;
+  margin: 0.5rem;
+  width: auto;
 }
 
 @media (max-width: 1000px) {

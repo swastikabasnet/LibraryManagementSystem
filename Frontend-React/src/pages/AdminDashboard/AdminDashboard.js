@@ -29,6 +29,16 @@ function AdminDashboard() {
     const [totalAvailibility, setTotalAvailibility] = useState("");
     const [totalIssued, setTotalIssue] = useState("");
 
+    // for Hello, admin name
+    const [adminName, setAdminName] = useState("");
+
+    useEffect(() => {
+        axios.get('http://localhost:8080/admin/' + adminId)
+            .then(response => {
+                setAdminName(response.data.name);
+            })
+    })
+
     // dynamic data to get in Admin Dashboard
     useEffect(() => {
         axios.get('http://localhost:8080/users')
@@ -118,9 +128,9 @@ function AdminDashboard() {
     return (
         <div class="main">
             <div class="topbar">
-                <h3 style={{margin:'4px', padding: '4px'}}>Hello, Admin</h3>
+                <h3 style={{ margin: '4px', padding: '4px' }}>Hello, {adminName}</h3>
                 <div class="toggle">
-                    
+
                 </div>
                 <div class="user">
                     <img class="navLogo" src={logo} alt="logo" />
@@ -210,8 +220,8 @@ function AdminDashboard() {
                     </tbody>
 
                 </table>
+                <button class="generatepdf" onClick={generatePdf}>Generate PDF</button>
             </div>
-            <button class="generatepdf" onClick={generatePdf}>Generate PDF</button>
         </div>
     );
 }

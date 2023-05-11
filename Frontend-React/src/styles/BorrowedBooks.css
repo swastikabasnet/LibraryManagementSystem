@@ -43,3 +43,10 @@ textarea {
     cursor: pointer;
     width: 15%;
 }
+
+button {
+    font-size: larger;
+    padding: 0.2rem 1rem;
+    margin: 0.5rem;
+    width: auto;
+}

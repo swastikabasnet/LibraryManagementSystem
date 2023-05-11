@@ -46,10 +46,7 @@ function DashboardNav() {
                     </li>
 
                     <li>
-                        <Link to="/dashboard/userlogout" onClick={() => {
-                            localStorage.clear(); // clear all items in localStorage
-                            sessionStorage.clear(); // clear all items in sessionStorage
-                        }}>
+                        <Link to="/dashboard/userlogout" >
                             <span class="icon"><IonIcon icon={logOutOutline}></IonIcon></span>
                             <span class="title">Log Out</span>
                         </Link>
