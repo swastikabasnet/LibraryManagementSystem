@@ -47,9 +47,7 @@ function Dashboard() {
     return (
         <div class="main">
             <div class="topbar">
-                <h3 style={{ margin: '4px', padding: '4px' }}>Hello, {userName}</h3>
-                <div class="toggle">
-                </div>
+                <h3 style={{ margin: '4px', padding: '4px', color: '#2d6d05' }}>Hello, {userName}</h3>
                 <div class="user">
                     <img class="navLogo" src={logo} alt="logo" />
                 </div>

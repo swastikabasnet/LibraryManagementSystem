@@ -128,7 +128,7 @@ function AdminDashboard() {
     return (
         <div class="main">
             <div class="topbar">
-                <h3 style={{ margin: '4px', padding: '4px' }}>Hello, {adminName}</h3>
+                <h3 style={{ margin: '4px', padding: '4px', color: "#2d6d05" }}>Hello, {adminName}</h3>
                 <div class="toggle">
 
                 </div>
