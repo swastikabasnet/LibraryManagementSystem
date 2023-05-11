@@ -109,7 +109,6 @@ function Login() {
         <Link class="active" to="/">
           Home
         </Link>
-        <Link to="/login">User</Link>
       </div>
       <div class="flex-container">
         <img class="navLogo" src={logo} alt="" />

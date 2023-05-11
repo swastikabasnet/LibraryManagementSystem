@@ -90,7 +90,7 @@ function BorrowedBooks() {
                 </div>
             </div>
 
-            <div id="dashboard-container" style={{ margin: "0rem 0rem 1rem 0rem" }}>
+            <div id="dashboard-container" style={{ margin: "2rem 0rem 1rem 0rem" }}>
                 <table class="dashboard-table" id="book-list">
                     <thead>
                         <tr>

@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import logo from "../styles/images/logo.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import styles from "../styles/forgot-password.module.css";
+// import styles from "../styles/forgot-password.module.css";
 import { toast } from "react-hot-toast";
+import "../styles/AdminLogin.css";
+
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -18,7 +20,8 @@ function ForgotPassword() {
       .then((data) => {
         // handle the response from the server
         sessionStorage.setItem('email', email);
-        console.log(data);
+        toast.success("OTP code sent");
+        // console.log(data);
         navigate("/verify_otp");
       })
       .catch((error) => {
@@ -31,24 +34,18 @@ function ForgotPassword() {
     confirmEmail()
   }
   return (
-    <>
-      <main className={styles.main}>
-        <header className={styles.header}>
-          <nav>
-            <Link to="/">
-              <img className={styles.logo} src={logo} alt="App Logo" />
-            </Link>
-            <h1>Hamro Library</h1>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-                <Link to="/login">Login</Link>
-              </li>
-            </ul>
-          </nav>
-        </header>
-        <form onSubmit={handleSubmit} className={styles.form} action="">
-          <h1>Forgot Password</h1>
+    <div class="AdminLogin-body">
+      <div class="topnav">
+        <Link class="active" to="/">Home</Link>
+        <Link to="/login">Login</Link>
+      </div>
+      <div class="flex-container">
+        <img src={logo} alt="" />
+        <h2>Welcome to Hamro Library</h2>
+      </div>
+      <div class="row">
+        <h1>Forgot Password</h1>
+        <div class="form-group">
           <input
             type="email"
             placeholder="Enter your registered email"
@@ -62,12 +59,10 @@ function ForgotPassword() {
               setEmail(e.target.value);
             }}
           />
-          <button class="btn" type="submit">
-            Send Otp code
-          </button>
-        </form>
-      </main>
-    </>
+          <button class="btn" type="submit" onClick={handleSubmit}>Send Otp code</button>
+        </div>
+      </div>
+    </div>
   );
 }
 

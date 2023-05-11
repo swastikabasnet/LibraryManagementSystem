@@ -1,6 +1,6 @@
 .AdminLogin-body {
   background-image: url("./images/Background.jpg");
-  
+
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -31,6 +31,21 @@
   top: 8px;
   left: 16px;
   font-size: 18px;
+}
+
+.admin-password {
+  /* display: block; */
+  padding: 0.5em 0;
+  width: 85%;
+  margin: 1em;
+  align-items: center;
+  /* background-color: inherit; */
+  background-color: #ffffff;
+  border: none;
+  border-bottom: 1px solid #555;
+  color: #000000;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .row {

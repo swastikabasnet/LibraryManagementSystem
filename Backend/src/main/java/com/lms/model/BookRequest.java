@@ -1,23 +1,24 @@
 package com.lms.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "book_rating")
-public class BookRating {
+@Table(name = "book_request")
+public class BookRequest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "rating", nullable = false)
-    private int rating;
 
-    @Column(name = "review")
-    private String review;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private BorrowStatus status;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
     @ManyToOne
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
@@ -30,12 +31,12 @@ public class BookRating {
         this.id = id;
     }
 
-    public int getRating() {
-        return rating;
+    public BorrowStatus getStatus() {
+        return status;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
+    public void setStatus(BorrowStatus status) {
+        this.status = status;
     }
 
     public User getUser() {
@@ -52,13 +53,5 @@ public class BookRating {
 
     public void setBook(Book book) {
         this.book = book;
-    }
-
-    public String getReview() {
-        return review;
-    }
-
-    public void setReview(String review) {
-        this.review = review;
     }
 }

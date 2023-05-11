@@ -33,8 +33,9 @@ public class BookRatingService {
         // Get the existing BookRating object from the database using its ID
         BookRating existingRating = bookRatingRepository.findById(bookRating.getId()).orElseThrow();
 
-        // Update the rating value and comment of the existing BookRating object with the values from the new BookRating object
+        // Update existing BookRating object with the values from the new BookRating object
         existingRating.setRating(bookRating.getRating());
+        existingRating.setReview(bookRating.getReview());
         existingRating.setUser(bookRating.getUser());
         existingRating.setBook(bookRating.getBook());
 

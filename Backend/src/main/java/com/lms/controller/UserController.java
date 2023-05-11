@@ -88,7 +88,7 @@ public class UserController {
             // Random OTP GENERATOR
             otp = random.nextInt(900000) + 100000;
             System.out.println("Exist -> " + emailOtpReset + " " + otp);
-            emailOtpService.sendMessage(emailOtpReset, "OPT verification code", String.valueOf(otp));
+            emailOtpService.sendMessage(emailOtpReset, "OPT verification code", "Your opt code for resetting password is\n" + otp + "\nUse the code to validate.");
         } else {
             throw new EmailNotFoundException(emailOtpReset);
         }
@@ -110,6 +110,13 @@ public class UserController {
     public void resetPasswordViaOTP(@RequestBody User user, @RequestParam("email") String email)  {
         System.out.println(email);
         User getUser = userService.getUserByEmail(email);
+        getUser.setPassword(user.getPassword());
+        userService.updateUser(getUser);
+    }
+
+    @PutMapping("/user/reset-password")
+    public void resetPassword(@RequestBody User user, @RequestParam("id") long id){
+        User getUser = userService.getUserByID(id);
         getUser.setPassword(user.getPassword());
         userService.updateUser(getUser);
     }

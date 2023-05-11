@@ -10,11 +10,26 @@ function Dashboard() {
 
     // get books
     const [books, setBooks] = useState([]);
+    const [bookStatuses, setBookStatuses] = useState({});
     useEffect(() => {
         axios.get('http://localhost:8080/books')
             .then(response => {
                 // console.log(response.data[0].id);
                 setBooks(response.data);
+                // hide the request button
+                axios.get('http://localhost:8080/requests')
+                    .then(response => {
+                        const statusDict = response.data.reduce((acc, request) => {
+                            const bookId = request.book.id;
+                            const status = request.status;
+                            acc[bookId] = status;
+                            return acc;
+                        }, {});
+                        setBookStatuses(statusDict);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
             })
             .catch(error => {
                 console.log(error);
@@ -38,7 +53,15 @@ function Dashboard() {
             .then(response => {
                 // console.log(response.data);
                 // window.location.reload(true);
-                toast.success("Book requested");
+                axios.post('http://localhost:8080/requests', { user: { id: userId }, book: { id: id } })
+                    .then(response => {
+                        toast.success("Book requested");
+                        setTimeout(() => {
+                            window.location.reload(false);
+                        }, 500);
+                    }).catch(error => {
+                        toast.error("Unable to request");
+                    })
             })
             .catch(error => {
                 toast.error("Failed, max 2 request");
@@ -111,7 +134,17 @@ function Dashboard() {
                                     )} / 5
                                 </td>
                                 <td class="Request">
-                                    <button class="request-button" type='button' onClick={() => handleBorrow(book.id)} >Request</button>
+                                    {bookStatuses[book.id] === 'REQUESTED' ? (
+                                        <span>Requested</span>
+                                    ) : (
+                                        <button
+                                            className="request-button"
+                                            type="button"
+                                            onClick={() => handleBorrow(book.id)}
+                                        >
+                                            Request
+                                        </button>
+                                    )}
                                 </td>
                             </tr>
                         ))}

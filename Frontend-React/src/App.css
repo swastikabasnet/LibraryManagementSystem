@@ -372,6 +372,13 @@ nav {
   width: auto;
 }
 
+
+/* dashboard table scroll bar */
+#dashboard-container {
+  overflow: auto;
+  max-height: 690px;
+}
+
 @media (max-width: 1000px) {
   .navbar-links-container a {
     margin-right: 1rem;

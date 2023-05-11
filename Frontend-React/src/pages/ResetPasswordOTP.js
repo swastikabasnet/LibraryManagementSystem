@@ -4,6 +4,7 @@ import logo from '../styles/images/logo.png';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import "../styles/verifyotp.css";
+import { PasswordInput } from '../components/PasswordInput';
 
 function ResetPasswordOTP() {
     const [password, setPassword] = useState('');
@@ -24,7 +25,10 @@ function ResetPasswordOTP() {
                     // handle the response from the server
                     // console.log(data);
                     sessionStorage.clear();
-                    navigate("/login");
+                    toast.success("Password changed");
+                    setTimeout(() => {
+                        navigate("/login");
+                    }, 500);
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -46,8 +50,12 @@ function ResetPasswordOTP() {
             <div class="row">
                 <h2>Reset Password</h2>
                 <div class="form-group">
-                    <input type="password" id="pwd" name="pwd" placeholder="Password" onChange={(e) => { setPassword(e.target.value) }} />
-                    <input type="password" id="mew_pwd" name="new_pwd" placeholder="Re-enter Password" onChange={(e) => { setConfirmPassword(e.target.value) }} />
+                    <PasswordInput
+                        type="password" id="pwd" name="pwd" placeholder="Password"
+                        onChange={(e) => { setPassword(e.target.value) }} />
+                    <PasswordInput
+                        type="password" id="mew_pwd" name="new_pwd" placeholder="Re-enter Password"
+                        onChange={(e) => { setConfirmPassword(e.target.value) }} />
                     <button type='button' class="btn" onClick={resetPassword}>Reset Password</button>
                 </div>
             </div>
