@@ -84,25 +84,25 @@ function BorrowedBooks() {
         <div class="main">
             <div class="topbar">
                 <div class="toggle">
-                    <span class="icon"><IonIcon icon={menuOutline}></IonIcon></span>
                 </div>
                 <div class="user">
                     <img class="navLogo" src={logo} alt="logo" />
                 </div>
             </div>
 
-            <div id="dashboard-container">
+            <div id="dashboard-container" style={{ margin: "2rem 0rem 1rem 0rem" }}>
                 <table class="dashboard-table" id="book-list">
                     <thead>
                         <tr>
+                            <th>Borrow Id</th>
                             <th>Book Id</th>
                             <th>Book Title</th>
                             <th>User Id</th>
-                            <th>Username</th>
-                            <th>Borrow Id</th>
+                            <th>Borrowed user</th>
                             <th>Borrow Date</th>
                             <th>Due Date</th>
                             <th>Return Date</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -116,6 +116,7 @@ function BorrowedBooks() {
                                 <td>{br.borrowDate}</td>
                                 <td>{br.dueDate}</td>
                                 <td>{br.returnDate}</td>
+                                <td>{br.status}</td>
                             </tr>))}
                     </tbody>
                 </table>

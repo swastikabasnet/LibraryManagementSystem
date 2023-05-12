@@ -14,9 +14,6 @@ function DashboardNav() {
     console.log(location.state);
     return (
         <div class="container" id="container">
-            {/* <div class="user">
-                    <img class="navLogo" src={logo1} alt=" logo" />
-                </div> */}
             <div class="navigation">
                 <div class="topbar" >
                 </div>
@@ -49,10 +46,7 @@ function DashboardNav() {
                     </li>
 
                     <li>
-                        <Link to="/login" onClick={() => {
-                            localStorage.clear(); // clear all items in localStorage
-                            sessionStorage.clear(); // clear all items in sessionStorage
-                        }}>
+                        <Link to="/dashboard/userlogout" >
                             <span class="icon"><IonIcon icon={logOutOutline}></IonIcon></span>
                             <span class="title">Log Out</span>
                         </Link>

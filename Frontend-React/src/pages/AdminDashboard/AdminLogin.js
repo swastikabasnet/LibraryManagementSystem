@@ -34,7 +34,6 @@ function AdminLogin() {
         <div class="AdminLogin-body">
             <div class="topnav">
                 <Link class="active" to="/">Home</Link>
-                <Link class="active" to="/admin">Admin</Link>
             </div>
             <div class="flex-container">
                 <img src={logo} alt="" />
@@ -44,7 +43,9 @@ function AdminLogin() {
                 <h1>Admin Login</h1>
                 <div class="form-group">
                     <input type="Email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required onChange={(e) => { setEmail(e.target.value) }} />
-                    <input type="password" id="pwd" name="pwd" placeholder="Password" onChange={(e) => { setPassword(e.target.value) }} />
+                    <input
+                        type="password" id="pwd" name="pwd" placeholder="Password"
+                        onChange={(e) => { setPassword(e.target.value) }} />
                     <button type="button" onClick={login}>Login</button>
                     {errorMsg && (
                         <h4 className="error-message" style={{ color: "red", marginTop: "10px" }}>

@@ -349,6 +349,11 @@
     padding-inline: 15px;
 }
 
+.title_title {
+    font-size: x-large;
+    font-weight: bold;
+}
+
 /* ====================== Responsive Design ========================== */
 
 @media (max-width: 991px) {

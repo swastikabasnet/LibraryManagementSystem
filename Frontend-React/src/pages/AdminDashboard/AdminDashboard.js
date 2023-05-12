@@ -26,21 +26,49 @@ function AdminDashboard() {
     const [uDescription, usetdescription] = useState('');
     const [totalmenmbers, settotalmenmbers] = useState('');
     const [totalbooks, settotalbooks] = useState('');
+    const [totalAvailibility, setTotalAvailibility] = useState("");
+    const [totalIssued, setTotalIssue] = useState("");
+
+    // for Hello, admin name
+    const [adminName, setAdminName] = useState("");
+
+    useEffect(() => {
+        axios.get('http://localhost:8080/admin/' + adminId)
+            .then(response => {
+                setAdminName(response.data.name);
+            })
+    })
 
     // dynamic data to get in Admin Dashboard
     useEffect(() => {
         axios.get('http://localhost:8080/users')
             .then(response => {
+                // get total user count
                 settotalmenmbers(response.data.length)
+                // get total number of borrowed book count
+                let count = 0;
+                for (let i = 0; i < response.data.length; i++) {
+                    count += response.data[i].numBookBorrowed;
+                }
+                setTotalIssue(count);
+            })
+            .catch(error => {
+                console.log(error);
             })
     }, []);
 
+    // get books and the total availibility count
     useEffect(() => {
         axios.get('http://localhost:8080/books')
             .then(response => {
-                console.log(response.data);
+                // console.log(response.data);
                 setBooks(response.data);
                 settotalbooks(response.data.length);
+                let count = 0;
+                for (let i = 0; i < response.data.length; i++) {
+                    count += response.data[i].availability;
+                }
+                setTotalAvailibility(count);
             })
             .catch(error => {
                 console.log(error);
@@ -48,6 +76,7 @@ function AdminDashboard() {
     }, []);
 
 
+    // edit book
     const handleEdit = (id) => {
         axios.get('http://localhost:8080/books/' + id)
             .then(res => {
@@ -62,7 +91,14 @@ function AdminDashboard() {
         setEditID(id)
     }
 
+    // updated edited book
     const handleUpdate = () => {
+
+        if (uQuantity < 0 || uAvailability < 0) {
+            toast.error("Invalid negative value");
+            return;
+        }
+
         axios.put('http://localhost:8080/books/' + editID, { id: editID, bookTitle: uBookTitle, author: author, category: category, quantity: uQuantity, availability: uAvailability, description: uDescription, publishedDate: publishedDate })
             .then(res => {
                 console.log(res);
@@ -70,7 +106,7 @@ function AdminDashboard() {
             }).catch(err => console.log(err));
     }
 
-
+    // delete book
     const handleDelete = (id) => {
         axios.delete('http://localhost:8080/books/' + id)
             .then(res => {
@@ -92,15 +128,10 @@ function AdminDashboard() {
     return (
         <div class="main">
             <div class="topbar">
+                <h3 style={{ margin: '4px', padding: '4px', color: "#2d6d05" }}>Hello, {adminName}</h3>
                 <div class="toggle">
-                    <IonIcon icon={menuOutline}></IonIcon>
+
                 </div>
-                {/* <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search book" />
-                        <IonIcon icon={searchOutline}></IonIcon>
-                    </label>
-                </div> */}
                 <div class="user">
                     <img class="navLogo" src={logo} alt="logo" />
                 </div>
@@ -119,7 +150,7 @@ function AdminDashboard() {
 
                 <div class="card">
                     <div>
-                        <div class="numbers">80</div>
+                        <div class="numbers">{totalAvailibility}</div>
                         <div class="cardName">Available Books</div>
                     </div>
 
@@ -130,7 +161,7 @@ function AdminDashboard() {
 
                 <div class="card">
                     <div>
-                        <div class="numbers">284</div>
+                        <div class="numbers">{totalIssued}</div>
                         <div class="cardName">Issued Books</div>
                     </div>
 
@@ -189,8 +220,8 @@ function AdminDashboard() {
                     </tbody>
 
                 </table>
+                <button class="generatepdf" onClick={generatePdf}>Generate PDF</button>
             </div>
-            <button class="generatepdf" onClick={generatePdf}>Generate PDF</button>
         </div>
     );
 }

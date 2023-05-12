@@ -43,3 +43,23 @@ textarea {
     cursor: pointer;
     width: 15%;
 }
+
+button {
+    font-size: medium;
+    padding: 0.4rem 1rem;
+    margin: 0.5rem;
+    width: auto;
+}
+
+/* Review form */
+.user-review {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 9999;
+    backdrop-filter: blur(10px);
+}

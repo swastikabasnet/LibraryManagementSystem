@@ -7,6 +7,7 @@ import { book, library, menuOutline, people, reader, reload, searchOutline } fro
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
+import { PasswordInput } from "../../components/PasswordInput";
 
 // inner navigate
 const TABS = {
@@ -26,7 +27,7 @@ function MyAccount() {
     const [tab, setTab] = useState(TABS.admins);
 
     // admin update
-    const tabItemStyle = (tabItem) => ({ display: tabItem === tab ? "block" : "none", marginTop: "3rem", marginInline: "auto" })
+    const tabItemStyle = (tabItem) => ({ display: tabItem === tab ? "block" : "none", marginTop: "2rem", marginInline: "auto" })
 
     // get admin{id} data
     useEffect(() => {
@@ -150,13 +151,12 @@ function MyAccount() {
         <div class="main">
             <div class="topbar">
                 <div class="toggle">
-                    <IonIcon icon={menuOutline}></IonIcon>
                 </div>
                 <div class="user">
                     <img class="navLogo" src={logo} alt="logo" />
                 </div>
             </div>
-            <div>
+            <div style={{ marginTop: "20px" }}>
                 <div id="setting-nav" class="topbara">
                     <button onClick={() => setTab(TABS.admins)}>Admins</button>
                     <button onClick={() => {
@@ -192,7 +192,7 @@ function MyAccount() {
                     <label for="phoneNumber">Phone number:</label>
                     <input type="tel" onChange={(e) => setAdminPhoneNumber(e.target.value)} value={adminPhoneNumber} />
                     <label for="adminPassword">Password:</label>
-                    <input type="password" onChange={(e) => setAdminPassword(e.target.value)} value={adminPassword} />
+                    <PasswordInput type="password" onChange={(e) => setAdminPassword(e.target.value)} value={adminPassword} />
                     <label for="adminConfirmPassword">Confirm Password:</label>
                     <input type="password" onChange={(e) => setAdminConfirmPassword(e.target.value)} value={adminConfirmPassword} />
                     <button class="save-button" type="submit" onClick={createAdmin}>Add Admin</button>
@@ -201,11 +201,20 @@ function MyAccount() {
                     <h2>Change Password</h2>
                     <br />
                     <label for="currentPassword">Current Password:</label>
-                    <input type="password" onChange={(e) => setOldPassword(e.target.value)} value={oldPassword} />
+                    <PasswordInput
+                        type="password"
+                        onChange={(e) => setOldPassword(e.target.value)}
+                        value={oldPassword} />
                     <label for="newPassword">New Password:</label>
-                    <input type="password" onChange={(e) => setNewPassword(e.target.value)} value={newPassowrd} />
+                    <PasswordInput
+                        type="password"
+                        onChange={(e) => setNewPassword(e.target.value)}
+                        value={newPassowrd} />
                     <label for="confirmNewPassword">Confirm New Password:</label>
-                    <input type="password" onChange={(e) => setNewConfirmPassword(e.target.value)} value={newConfirmPassword} />
+                    <PasswordInput
+                        type="password"
+                        onChange={(e) => setNewConfirmPassword(e.target.value)}
+                        value={newConfirmPassword} />
                     <button class="save-button" type="submit" onClick={changePassword}>Change Password</button>
                 </form>
 
