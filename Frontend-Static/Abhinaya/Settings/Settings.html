@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="Settings.css">
+    <link rel="stylesheet" href="../CSS/Dashboard.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script module src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+</head>
+
+<body>
+        <!--  -->
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span> <img class="user_logo" src="../Logo.png" alt="logo"></span>
+                        <span class="title_title">Hamro Library</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="Dashboard.html">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+    
+                <li>
+                    <a href="User.html">
+                        <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                        <span class="title">User Details</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="Managebooks.html">
+                        <span class="icon"><ion-icon name="book-outline"></ion-icon></span>
+                        <span class="title">Manage Books</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="Bookrequest.html">
+                        <span class="icon"><ion-icon name="notifications-outline"></ion-icon></span>
+                        <span class="title">Book Request Data</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="IssueBooks.html">
+                        <span class="icon"><ion-icon name="arrow-redo-outline"></ion-icon></span>
+                        <span class="title">Issued Books</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="BorrowedBooks.html">
+                        <span class="icon"><ion-icon name="book-outline"></ion-icon></span>
+                        <span class="title">Borrowed Books</span>
+                    </a>
+                </li>
+    
+                <li>
+                    <a href="Settings.html">
+                        <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                        <span class="title">Settings</span>
+                    </a>
+                </li>
+    
+                <li>
+                    <a href="#" onclick="confirmLogout();">
+                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span class="title">Log Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- ================ main =================-->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+                <div class="user">
+                    <img class="user" src="../admin.png" alt="logo">
+                </div>
+            </div>
+        <div>
+            <button onclick="showEditForm()">Edit Profile</button>
+            <button onclick="showProfileDetails()">Profile Details</button>
+            <button onclick="showAddAdmin()">Add Admin</button>
+            <button onclick="showChangePassword()">Change Password</button>
+            <button onclick="showDeleteForm()">Delete</button>
+        </div>
+        <div>
+            <form id="editForm" style="display:none">
+                <!-- edit form fields here -->
+                <h2>Edit Profile</h2>
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName"><br>
+            
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName"><br>
+            
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br>
+            
+                <label for="birthdate">Birthdate:</label>
+                <input type="date" id="birthdate" name="birthdate"><br>
+
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location"><br>
+            
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select><br>
+            
+                <input type="submit" value="Save Changes">
+            </form>
+            <div id="profileDetails" style="display:none">
+                <!-- profile details here -->
+                <h2>Profile Details</h2>
+                <p><strong>Name:</strong> Sajan Kumar Shrestha</p>
+                <p><strong>Email:</strong> sajankumarshrestha123@example.com</p>
+                <p><strong>Birthdate:</strong> January 1, 1990</p>
+                <p><strong>Gender:</strong> Male</p>
+                <p><strong>Location:</strong> Kathamndu</p>
+            </div>
+            <form id="addAdminForm" style="display:none">
+                <!-- add admin form fields here -->
+                <h2>Add Admin</h2>
+                <label for="adminUsername">Admin Username:</label>
+                <input type="text" id="adminUsername" name="adminUsername">
+                <label for="adminPassword">Admin Password:</label>
+                <input type="password" id="adminPassword" name="adminPassword">
+                <label for="adminConfirmPassword">Confirm Password:</label>
+                <input type="password" id="adminConfirmPassword" name="adminConfirmPassword">
+                <button type="submit">Add Admin</button>
+            </form>
+            <form id="changePasswordForm" style="display:none">
+                <h2>Change Password</h2>
+                <label for="currentPassword">Current Password:</label>
+                <input type="password" id="currentPassword" name="currentPassword"><br>
+                <label for="newPassword">New Password:</label>
+                <input type="password" id="newPassword" name="newPassword"><br>
+                <label for="confirmNewPassword">Confirm New Password:</label>
+                <input type="password" id="confirmNewPassword" name="confirmNewPassword"><br>
+                <button type="submit">Change Password</button>
+            </form>
+            
+            <form id="deleteForm" style="display:none">
+                <!-- delete form fields here -->
+                <form id="deleteForm" style="display:none">
+                    <h2>Delete Admin</h2>
+                    <label for="adminToDelete">Admin Username:</label>
+                    <input type="text" id="adminToDelete" name="adminToDelete">
+                    <button type="submit">Delete Admin</button>
+                </form>
+            </form>
+        </div>
+    
+        <script>
+            var editForm = document.getElementById("editForm");
+            var profileDetails = document.getElementById("profileDetails");
+            var addAdminForm = document.getElementById("addAdminForm");
+            var changePassword = document.getElementById("changePasswordForm")
+            var deleteForm = document.getElementById("deleteForm");
+    
+            function showEditForm() {
+                document.getElementById("editForm").style.display = "block";
+                document.getElementById("profileDetails").style.display = "none";
+                document.getElementById("addAdminForm").style.display = "none";
+                document.getElementById("changePasswordForm").style.display = "none";
+                document.getElementById("deleteForm").style.display = "none";
+
+            }
+            document.getElementById("editForm").style.display = "none";
+
+    
+            function showProfileDetails() {
+                document.getElementById("editForm").style.display = "none";
+                document.getElementById("profileDetails").style.display = "block";
+                document.getElementById("addAdminForm").style.display = "none";
+                document.getElementById("changePasswordForm").style.display = "none";
+                document.getElementById("deleteForm").style.display = "none";
+            }
+            document.getElementById("profileDetails").style.display = "none";
+    
+            function showAddAdmin() {
+                document.getElementById("editForm").style.display = "none";
+                document.getElementById("profileDetails").style.display = "none";
+                document.getElementById("addAdminForm").style.display = "block";
+                document.getElementById("changePasswordForm").style.display = "none";
+                document.getElementById("deleteForm").style.display = "none";
+            }
+            document.getElementById("addAdminForm").style.display = "none";
+
+                function showChangePassword() {
+                document.getElementById("editForm").style.display = "none";
+                document.getElementById("profileDetails").style.display = "none";
+                document.getElementById("addAdminForm").style.display = "none";
+                document.getElementById("changePasswordForm").style.display = "block";
+                document.getElementById("deleteForm").style.display = "none";
+                }
+            document.getElementById("changePasswordForm").style.display = "none";
+
+    
+            function showDeleteForm() {
+                document.getElementById("editForm").style.display = "none";
+                document.getElementById("profileDetails").style.display = "none";
+                document.getElementById("addAdminForm").style.display = "none";
+                document.getElementById("changePasswordForm").style.display = "none";
+                document.getElementById("deleteForm").style.display = "block";
+            }
+            document.getElementById("deleteForm").style.display = "none";
+        </script>
+    </body>
+    
+    
+
+</html>
