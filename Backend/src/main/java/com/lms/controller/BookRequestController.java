@@ -1,7 +1,5 @@
 package com.lms.controller;
 
-import com.lms.model.Book;
-import com.lms.model.BookRating;
 import com.lms.model.BookRequest;
 import com.lms.services.BookRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,10 +29,16 @@ public class BookRequestController {
     }
 
     @PutMapping("/requests/{id}")
-    public BookRequest updateRequest(@RequestBody BookRequest br, @PathVariable long id){
+        public BookRequest updateRequest(@RequestBody BookRequest br, @PathVariable long id, @RequestParam("admin") long adminId){
         BookRequest bookRequest = requestById(id);
+        System.out.println(adminId);
+        return bookRequestService.updateRequest(bookRequest, adminId);
+    }
 
-        return bookRequestService.updateRequest(bookRequest);
+    @PutMapping("/requests_return/{id}")
+        public BookRequest updateRequestReturn(@RequestBody BookRequest br, @PathVariable long id){
+        BookRequest bookRequest = requestById(id);
+        return bookRequestService.updateRequestReturn(bookRequest);
     }
 
     @DeleteMapping("/requests/{id}")

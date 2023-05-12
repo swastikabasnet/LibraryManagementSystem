@@ -1,6 +1,5 @@
 package com.lms.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
@@ -22,6 +21,10 @@ public class BookRequest {
     @ManyToOne
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
+
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "admin_id", nullable = true)
+    private Admin admin;
 
     public long getId() {
         return id;
@@ -53,5 +56,13 @@ public class BookRequest {
 
     public void setBook(Book book) {
         this.book = book;
+    }
+
+    public Admin getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
     }
 }

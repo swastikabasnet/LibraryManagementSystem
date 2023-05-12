@@ -13,7 +13,7 @@ function BookRequests() {
     useEffect(() => {
         axios.get('http://localhost:8080/borrow')
             .then(response => {
-                console.log(response.data);
+                // console.log(response.data);
                 setBorrow(response.data);
                 const userIds = response.data.map(br => br.user.id);
                 const uniqueUserIds = [...new Set(userIds)];
@@ -64,13 +64,43 @@ function BookRequests() {
             });
     }
 
+    const adminId = parseInt(sessionStorage.getItem("adminId"));
     const handleAccept = (borrwID) => {
         axios.put('http://localhost:8080/borrow/accept', { borrowId: borrwID })
             .then(res => {
                 toast.success("Request accepted");
-                setTimeout(() => {
-                    window.location.reload(false);
-                }, 500);
+                axios.get('http://localhost:8080/borrow/' + borrwID)
+                    .then(res => {
+                        // console.log(res.data.book.id);
+                        const bookId = res.data.book.id;
+                        const userId = res.data.user.id;
+
+                        axios.get('http://localhost:8080/requests')
+                            .then(response => {
+                                let requestId = null;
+                                for (let i = 0; i < response.data.length; i++) {
+                                    if (response.data[i].user.id === userId && response.data[i].book.id === bookId) {
+                                        requestId = response.data[i].id;
+                                        break;
+                                    }
+                                }
+                                // console.log(requestId);
+                                // received requestID
+                                console.log("1:", requestId, "\n2:", adminId, "\nBook:", bookId, "\nUser:", userId)
+                                axios.put('http://localhost:8080/requests/' + requestId, {
+                                    user: { id: userId }, book: { id: bookId },
+                                }, {
+                                    params: {
+                                        admin: adminId,
+                                    }
+                                }).then(res => {
+                                    setTimeout(() => {
+                                        window.location.reload(false);
+                                    }, 500);
+                                })
+                            })
+
+                    })
             }).catch(err => console.log(err));
     }
 
@@ -78,9 +108,38 @@ function BookRequests() {
         axios.put('http://localhost:8080/borrow/reject', { borrowId: borrwID })
             .then(res => {
                 toast.error("Request rejected");
-                setTimeout(() => {
-                    window.location.reload(false);
-                }, 500);
+                axios.get('http://localhost:8080/borrow/' + borrwID)
+                    .then(res => {
+                        // console.log(res.data.book.id);
+                        const bookId = res.data.book.id;
+                        const userId = res.data.user.id;
+
+                        axios.get('http://localhost:8080/requests')
+                            .then(response => {
+                                let requestId = null;
+                                for (let i = 0; i < response.data.length; i++) {
+                                    if (response.data[i].user.id === userId && response.data[i].book.id === bookId) {
+                                        requestId = response.data[i].id;
+                                        break;
+                                    }
+                                }
+                                // console.log(requestId);
+                                // received requestID
+                                console.log("1:", requestId, "\n2:", adminId, "\nBook:", bookId, "\nUser:", userId)
+                                axios.put('http://localhost:8080/requests/' + requestId, {
+                                    user: { id: userId }, book: { id: bookId },
+                                }, {
+                                    params: {
+                                        admin: adminId,
+                                    }
+                                }).then(res => {
+                                    setTimeout(() => {
+                                        window.location.reload(false);
+                                    }, 500);
+                                })
+                            })
+
+                    })
             }).catch(err => console.log(err));
     }
 

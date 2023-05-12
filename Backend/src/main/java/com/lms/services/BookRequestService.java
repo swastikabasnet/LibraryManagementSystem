@@ -1,5 +1,6 @@
 package com.lms.services;
 
+import com.lms.model.Admin;
 import com.lms.model.BookRequest;
 import com.lms.model.BorrowStatus;
 import com.lms.repository.BookRequestRepository;
@@ -30,7 +31,7 @@ public class BookRequestService {
         return bookRequestRepository.findById(id).orElseThrow();
     }
 
-    public BookRequest updateRequest(BookRequest br){
+    public BookRequest updateRequest(BookRequest br, long adminId){
         // get existing book request
         BookRequest existingRequest = requestById(br.getId());
 
@@ -38,6 +39,25 @@ public class BookRequestService {
         existingRequest.setStatus(BorrowStatus.RETURNED);
         existingRequest.setBook(br.getBook());
         existingRequest.setUser(br.getUser());
+
+        Admin admin = new Admin();
+        admin.setId(adminId);
+        existingRequest.setAdmin(admin);
+        // save edited data
+        bookRequestRepository.save(existingRequest);
+
+        return existingRequest;
+    }
+
+    public BookRequest updateRequestReturn(BookRequest br){
+        // get existing book request
+        BookRequest existingRequest = requestById(br.getId());
+
+        // set book returned status
+        existingRequest.setStatus(BorrowStatus.RETURNED);
+        existingRequest.setBook(br.getBook());
+        existingRequest.setUser(br.getUser());
+        existingRequest.setAdmin(br.getAdmin());
         // save edited data
         bookRequestRepository.save(existingRequest);
 

@@ -66,17 +66,18 @@ function MyBorrowedBook() {
                                 break;
                             }
                         }
-                        // console.log(returnId);
+                        console.log(returnId);
                         if (returnId !== null) {
-                            axios.put(`http://localhost:8080/requests/${returnId}`, { user: { id: userID }, book: { id: bookID } })
+                            axios.put(`http://localhost:8080/requests_return/${returnId}`, { user: { id: userID }, book: { id: bookID } })
                                 .then(response => {
-                                    // console.log("response \n", response.data);
+                                    console.log("response \n", response.data);
                                     toast.success("Book return success");
                                     setTimeout(() => {
                                         setShowRatingForm(true);
                                     }, 500);
                                 })
                                 .catch(error => {
+                                    toast.error("Failed to return")
                                     console.log(error);
                                 });
                         }
