@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="Logout.css"> -->
+</head>
+<body>
+<button id="logout-btn">Logout</button>
+
+<div id="logout-popup" class="popup">
+  <p>Are you sure you want to log out?</p>
+  <button id="confirm-btn">Yes</button>
+  <button id="cancel-btn">No</button>
+</div>
+
+<style>
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    display: none;
+  }
+
+  .popup p {
+    margin: 0 0 10px;
+  }
+
+  .popup button {
+    margin-right: 10px;
+  }
+</style>
+
+<script>
+  const logoutBtn = document.getElementById('logout-btn');
+  const popup = document.getElementById('logout-popup');
+  const confirmBtn = document.getElementById('confirm-btn');
+  const cancelBtn = document.getElementById('cancel-btn');
+  
+  logoutBtn.addEventListener('click', () => {
+    popup.style.display = 'block';
+  });
+  
+  confirmBtn.addEventListener('click', () => {
+    // perform logout action here
+    // e.g. redirect user to login page
+    popup.style.display = 'none';
+  });
+  
+  cancelBtn.addEventListener('click', () => {
+    popup.style.display = 'none';
+  });
+</script>
+</body>
+
+  
