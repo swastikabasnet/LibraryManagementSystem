@@ -457,7 +457,7 @@ body {
     min-height: 500px;
     padding: 20px;
     background: var(--white);
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 7px 26px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
 }
 
@@ -507,18 +507,18 @@ body {
 
 @media (max-width: 991px) {
     .navigation {
-        left: -300px;
+        left: -299px;
     }
     .navigation.active {
-        width: 300px;
+        width: 299px;
         left: 0;
     }
     .main {
-        width: 100%;
+        width: 99%;
         left: 0;
     }
     .main.active {
-        left: 300px;
+        left: 299px;
     }
     .cardBox {
         grid-template-columns: repeat(2, 1fr);
