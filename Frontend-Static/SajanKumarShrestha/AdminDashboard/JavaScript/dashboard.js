@@ -40,8 +40,10 @@ function confirmLogout() {
 }
 
 // admin logo Confirmation
-// function user() {
-//     window.location.href = "../HTML/User.html";
+function user() {
+    window.location.href = "../HTML/User.html";
+}
 
-
-// }
+function admin() {
+    window.location.href = "../HTML/Dashboard.html"
+}
